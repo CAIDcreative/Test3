@@ -1,0 +1,34 @@
+{% set initalStatuses = {
+	"calledBack": "Called back",
+	"emailedBack": "Emailed back",
+} %}
+
+{% set secondaryStatuses = {
+	"madeAppointment": "Made Appointment",
+	"followUpLater": "Follow up Later",
+	"didNotProceed": "Did not proceed",
+	"isSpam": "Is spam",
+} %}
+
+<hr/>
+<h5>Please tell us how you handled this by clicking an option below:</h5>
+<ul style="display: inline;">
+	{% for key, value in initalStatuses %}
+		<li style="display: inline; list-style-type: none; padding-right: 20px;float: left;">
+			<a href="{{ siteUrl('freeform/update' ~ '?id=' ~ submission.token ~ '&status=' ~ key) }}" target="_blank">
+			    {{ value }}
+			</a>
+		</li>
+	{% endfor %}
+</ul>
+<br/>
+<br/>
+<ul style="display: inline;">
+	{% for key, value in secondaryStatuses %}
+		<li style="display: inline; list-style-type: none; padding-right: 20px;float: left;">
+			<a href="{{ siteUrl('freeform/update' ~ '?id=' ~ submission.token ~ '&status=' ~ key) }}" target="_blank">
+			    {{ value }}
+			</a>
+		</li>
+	{% endfor %}
+</ul> 

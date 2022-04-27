@@ -1,0 +1,46 @@
+{% if innerPageMatrix | length %}
+    <article>
+        {% for matrixBlock in innerPageMatrix %}
+            {% switch matrixBlock.type %}
+                {% case "largeHeading" %}
+                    <h2 class="text-primary">
+                        {{ matrixBlock.heading }}
+                    </h2>
+                {% case "smallHeading" %}
+                    <h2 class="text-primary">
+                        {{ matrixBlock.heading }}
+                    </h2>
+                {% case "paragraph" %}
+                    {{ matrixBlock.paragraph }}
+                {% case "largeImage" %}
+                    {% set largeImage = matrixBlock.image %}
+                    <figure>
+                        {% if largeImage | length %}
+                            {{ craft.imageHelper.one(largeImage, {"class": "img-raised rounded img-fluid"}).render }}
+                        {% endif %}
+                        {% if matrixBlock.caption | length %}
+                            <figcaption>{{ matrixBlock.caption }}</figcaption>
+                        {% endif %}
+                    </figure>
+                {% case "paragraphPrimaryBg" %}
+                    <div class="card bg-primary">
+                        <div class="card-body">
+                            <h2 class="text-dark-primary border-bottom-dark-primary my-3">
+                                {{ matrixBlock.heading }}
+                            </h2>
+                            <div class="text-white">
+                                {{ matrixBlock.paragraph }}
+                            </div>
+                        </div>
+                    </div>
+                {% case "video" %}
+                    {% if matrixBlock.embedUrl | length %}
+                        <div class="embed-responsive embed-responsive-16by9 mb-2">
+                            <iframe class="embed-responsive-item" src="{{ matrixBlock.embedUrl }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    {% endif %}
+                {% default %}
+            {% endswitch %}
+        {% endfor %}
+    </article>
+{% endif %}

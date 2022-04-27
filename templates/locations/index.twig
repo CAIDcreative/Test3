@@ -1,0 +1,65 @@
+{# 
+    CAIDcreative/sleepdentistrymelbourne 
+    locations/index.twig 
+#} 
+
+{% extends "_layouts/main" %} 
+
+{% block main %}
+
+    <div class="main main-shadow">
+        {% include '_includes/standard-header' with {'entry': entry, } %}
+        <div class="my-3">
+            <div class="container">
+                <div class="row justify-content-center">
+                    {% set locations = craft.entries.section('locations').all() %}
+                    {% for location in locations %}
+                        <div class="col-md-6 col-lg-4 d-flex">
+                            <div class="card bg-white">
+                                <div class="card-body">
+                                    <div class="border-bottom">
+                                        <a href="{{ location.url }}" class="w-100 text-primary h2">{{ location.title }}</a>
+                                    </div>
+                                    <dl class="pl-0">
+                                        <dt class="">
+                                            <span class="text-dark-primary">Phone: </span><br/>
+                                        </dt>
+                                        <dd class="d-flex">
+                                            <a href="{{ contactInfo.contactMainPhone.RFC3966 }}" class="text-secondary lead">
+                                                <i class="material-icons p-2">phone</i>{{ location.locationPhone.phone }}
+                                            </a>
+                                        </dd>
+                                        <dt class="">
+                                            <span class="text-dark-primary">Address: </span><br/>
+                                        </dt>
+                                        <dd class="text-dark d-flex align-items-center">
+                                            <div class="d-flex">
+                                                <i class="material-icons p-2">location_on</i>
+                                                <span>{{ location.locationAddress.address1 ~ ", " ~ location.locationAddress.administrativeArea ~ " " ~ location.locationAddress.administrativeAreaCode }}</span>
+                                            </div>
+                                        </dd>
+                                        <dt class="">
+                                            <span class="text-dark-primary">Opening Hours: </span><br/>
+                                        </dt>
+                                        <dd class="text-dark d-flex align-items-center">
+                                            <div class="d-flex">
+                                                <i class="material-icons p-2">access_time</i>
+                                                <span>{{ location.locationShortStoreHours | nl2br }}</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="card-footer ">
+                                    <a href="{{ location.url }}" class="btn btn-secondary btn-round btn-block m-2 text-bold">
+                                         More Info
+                                     </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>          
+    
+{% endblock %}

@@ -1,0 +1,23 @@
+<div class="row mt-lg-4">
+	{% set entriesToShow = [] %}
+	{% set searchResults = [] %}
+	{% if relatedEntries | length < 4 %}
+		{% set searchResults = craft.entries()
+			.section("innerPages")
+		    .orderBy('RAND()')
+		    .limit(4 - (relatedEntries | length))
+		    .all() 
+	    %}
+	{% endif %}
+	{% set entriesToShow = relatedEntries | merge(searchResults) %}
+	{% for relatedEntry in entriesToShow %}
+		<a class="col-md-3 rounded" href="{{ relatedEntry.url }}">
+			<div class="card my-2 my-lg-2 box-shadow rounded">
+				{{ craft.imageHelper.one(relatedEntry.mainImage, {"class": "card-img-top", "transform": "x1280x720"}).render }}
+				<div class="card-footer bg-dark">
+					<p class="card-text text-white text-bold text-center">{{ relatedEntry.title }}</p>
+				</div>
+			</div>
+		</a>
+	{% endfor %}
+</div>

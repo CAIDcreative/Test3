@@ -1,0 +1,22 @@
+fieldLayouts:
+  a6a7c37d-4b94-4611-9668-6f16b35fb7c7:
+    tabs:
+      -
+        fields:
+          62caa9dc-1699-4df1-aede-d8715a247d78:
+            required: false
+            sortOrder: 3
+          b15ca5cb-e30d-4fc3-b518-2c18dd66bb00:
+            required: false
+            sortOrder: 2
+          d7583edf-ba9b-4bd8-a32a-77ea7655ec8f:
+            required: false
+            sortOrder: 1
+          e8a6d443-d5a6-47d6-b808-20286df833b6:
+            required: false
+            sortOrder: 4
+        name: SEO
+        sortOrder: 1
+handle: seoGlobals
+name: 'SEO GLOBALS'
+sortOrder: 5

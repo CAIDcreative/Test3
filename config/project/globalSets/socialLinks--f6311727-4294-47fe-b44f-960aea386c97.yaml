@@ -1,0 +1,22 @@
+fieldLayouts:
+  387432c6-f126-4d5e-9db8-ac5c414c7bfe:
+    tabs:
+      -
+        fields:
+          2f290e8a-28e2-4cd9-a34a-48d4d48af0fc:
+            required: false
+            sortOrder: 2
+          3e37a519-2497-4dbb-b7d0-78984beb23ae:
+            required: false
+            sortOrder: 1
+          0938e164-9146-4280-9720-237810b4b926:
+            required: false
+            sortOrder: 3
+          d785d89a-bab0-42a6-ba07-2d62a9c31b53:
+            required: false
+            sortOrder: 4
+        name: 'Social Links'
+        sortOrder: 1
+handle: socialLinks
+name: 'Social Links'
+sortOrder: 6

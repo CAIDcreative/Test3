@@ -1,0 +1,91 @@
+{# 
+	CAIDcreative/sleepdentistrymelbourne
+	_macros/images.twig
+
+	{% import "_macros/images" as images %}
+#}
+
+{% macro asset(asset, options) %}
+	{% set defaults = {
+		id: "",
+		class: "",
+		style: "",
+		transform: "",
+		alt: "",
+		lazy: true,
+		rawUrl: false,
+		link: false,
+	} %}
+
+	{% set options = options ? defaults | merge(options) : defaults %}
+	{% set otherOptions = {} %}
+	{% for key, value in options if key not in (defaults|keys) %}
+		{% set otherOptions = otherOptions | merge({ (key): value,}) %}
+	{% endfor %}
+
+	{% set fileAsset = asset.one %}
+	{% set file = fileAsset | length ? fileAsset : otherSettings.backupImage.one() %}
+
+	{% if file | length %}
+		{% set imgId 		= options.id %}
+		{% set imgClass		= options.class ~ ' ' ~ (options.lazy ? 'lazyload') %}
+		{% set imgStyle 	= options.style %}
+		{% set imgSrc 		= options.lazy ? craft.svgplaceholder.generate({ height: (options.transform != "" ? file.getHeight(options.transform) : file.height()), width: (options.transform != "" ? file.getWidth(options.transform) : file.width()) }) : file.getUrl(options.transform) %}
+		{% set imgDataSrc 	= options.lazy ? file.getUrl(options.transform) : "" %}
+		{% set imgAlt 		= options.alt != '' ? options.alt : file.alt %}
+		{% set imgLink 		= options.link %}
+
+		{% if options.rawUrl %}
+			{{ file.getUrl(options.transform)}}
+		{% else %}
+			{% if imgLink %}<a href="{{ file.getUrl }}" target="_blank">{% endif %}
+			<img id="{{ imgId }}" class="{{ imgClass }}" style="{{ imgStyle }}" src="{{ imgSrc }}" data-src="{{ imgDataSrc }}" alt="{{ imgAlt }}" {% for key, value in otherOptions %}{{ key ~ '="' ~ value ~ '" '}}{% endfor %}>
+			{% if imgLink %}</a>{% endif %}
+		{% endif %}
+	{% endif %}
+{% endmacro %}
+
+{% macro filename(filename, options) %}
+	{% set defaults = {
+		id: "",
+		class: "",
+		style: "",
+		transform: "x1920",
+		alt: "",
+		lazy: true,
+		volume: "images",
+		rawUrl: false,
+		link: false,
+	} %}
+
+	{% set options = options ? defaults | merge(options) : defaults %}
+	{% set otherOptions = {} %}
+	{% for key, value in options if key not in (defaults|keys) %}
+		{% set otherOptions = otherOptions | merge({ (key): value,}) %}
+	{% endfor %}
+
+	{% set fileAsset = craft.assets().volume(options.volume).filename(filename).one() %}
+	{% set file = fileAsset | length ? fileAsset : otherSettings.backupImage.one() %}
+
+	{% if file | length %}
+		{% set imgId 		= options.id %}
+		{% set imgClass		= options.class ~ ' ' ~ (options.lazy ? 'lazyload') %}
+		{% set imgStyle 	= options.style %}
+		{% set imgSrc 		= options.lazy ? craft.svgplaceholder.generate({ height: (options.transform != "" ? file.getHeight(options.transform) : file.height()), width: (options.transform != "" ? file.getWidth(options.transform) : file.width()) }) : file.getUrl(options.transform) %}
+		{% set imgDataSrc 	= options.lazy ? file.getUrl(options.transform) : "" %}
+		{% set imgAlt 		= options.alt != '' ? options.alt : file.alt %}
+		{% set imgLink 		= options.link %}
+
+		{% if options.rawUrl %}
+			{{ file.getUrl(options.transform) }}
+		{% else %}
+			{% if imgLink %}<a href="{{ file.getUrl }}" target="_blank">{% endif %}
+			<img id="{{ imgId }}" class="{{ imgClass }}" style="{{ imgStyle }}" src="{{ imgSrc }}" data-src="{{ imgDataSrc }}" alt="{{ imgAlt }}"  {% for key, value in otherOptions %}{{ key ~ '="' ~ value ~ '" '}}{% endfor %}>
+			{% if imgLink %}</a>{% endif %}
+		{% endif %}
+	{% endif %}
+{% endmacro %}
+
+{% macro eager(asset, options) %}
+	{# TODO #}
+{% endmacro %}

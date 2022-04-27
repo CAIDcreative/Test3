@@ -1,0 +1,65 @@
+{# 
+	CAIDcreative/sleepdentistrymelbourne 
+	news/index.twig 
+#} 
+
+{% extends "_layouts/main" %} 
+
+{% block main %}
+
+	<div class="main main-shadow">
+    	{% include '_includes/standard-header' with {'entry': entry, } %}
+        <div class="mt-3 pb-5">
+            <div class="container">
+                <div class="row">
+					{% set myEntryQuery = craft.entries()
+					.section('news')
+					.limit(6) %}
+					{% paginate myEntryQuery as queryInfo, entries %}
+					{% for entry in entries %}
+						<div class="col-md-4 d-flex">
+							<div class="card mb-6 box-shadow">
+								<a href="{{ entry.url }}">
+									{% set mainImage = entry.mainImage %}
+									{{ craft.imageHelper.one(mainImage, {"class": "card-img-top", "transform": "x1280x720"}).render }}
+								</a>
+								<div class="card-body d-flex flex-column justify-content-between">
+									<div class="mb-2">
+										<a href="{{ entry.url }}">
+										<h3 class="text-primary text-uppercase">{{ entry.title }}</h3></a>
+										<p class="card-text text-black">{{ entry.summary }}</p>
+									</div>
+									<a href="{{ entry.url }}" class="btn btn-sm btn-secondary" style="width: fit-content">Read More</a>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="row justify-content-center mt-3">
+					<div class="col-auto">
+						<nav aria-label="News Navigation">
+							<ul class="pagination pagination-lg pagination-primary">
+								<li class="page-item"><a href="{{ queryInfo.firstUrl }}" class="page-link"><<</a></li>
+								{% if queryInfo.prevUrl %}
+									<li class="page-item"><a href="{{ queryInfo.prevUrl }}" class="page-link"><</a></li>
+								{% endif %}
+								{% for page, url in queryInfo.getPrevUrls(5) %}
+								    <li class="page-item"><a href="{{ url }}" class="page-link">{{ page }}</a></li>
+								{% endfor %}
+								<li class="page-item active"><span class="page-link">{{ queryInfo.currentPage }}</span></li>
+								{% for page, url in queryInfo.getNextUrls(5) %}
+								    <li class="page-item"><a href="{{ url }}" class="page-link">{{ page }}</a></li>
+								{% endfor %}
+								{% if queryInfo.nextUrl %}
+									<li class="page-item"><a href="{{ queryInfo.nextUrl }}" class="page-link">></a></li>
+								{% endif %}
+								<li class="page-item"><a href="{{ queryInfo.lastUrl }}" class="page-link">>></a></li>
+							</ul>
+						</nav>
+					</div> 
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

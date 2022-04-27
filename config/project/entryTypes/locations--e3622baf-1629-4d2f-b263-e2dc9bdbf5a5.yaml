@@ -1,0 +1,89 @@
+fieldLayouts:
+  323b324f-0d29-4176-b2b9-a5cef79791c7:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: e530895c-6de1-4790-be9a-88222af380aa
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 53919104-bd07-434f-9abc-39c6cfe7baf6
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Common
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 070a701f-f0e7-42d8-b060-d3decda3e9e1
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: d9f35190-5288-4c70-86e3-f8dd30250e58
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: bcf44c9c-8527-47c4-b94c-5be4a7d078f1
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 19f115cd-8811-4ecb-b3cd-922040c5dcbb
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 47588c55-626a-4dec-90d8-c4ad4bf6cf63
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 5ac9e830-97a6-423a-a3b7-d993ab1e74b0
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Location Address'
+        sortOrder: 2
+      -
+        elements:
+          -
+            fieldUid: 53bb959c-e229-4d14-9326-856a7a7015cc
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 28420e90-fa40-40c1-8481-e023677ece7e
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 8e0464ad-5052-4f5c-96e9-e8ffd7c07f60
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Location Info'
+        sortOrder: 3
+      -
+        elements:
+          -
+            fieldUid: d7583edf-ba9b-4bd8-a32a-77ea7655ec8f
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: b15ca5cb-e30d-4fc3-b518-2c18dd66bb00
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 62caa9dc-1699-4df1-aede-d8715a247d78
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: e8a6d443-d5a6-47d6-b808-20286df833b6
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: SEO
+        sortOrder: 4
+handle: locations
+hasTitleField: true
+name: Locations
+section: d77fd574-f373-4869-a879-310ec9e849d7
+sortOrder: 1
+titleFormat: ''

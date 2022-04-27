@@ -1,0 +1,32 @@
+contentColumnType: text
+fieldGroup: 01f54834-a45f-4dcf-941f-c88597c01fa6
+handle: locationStoreHours
+instructions: ''
+name: 'Location Store Hours'
+searchable: true
+settings:
+  slots:
+    __assoc__:
+      -
+        - open
+        -
+          __assoc__:
+            -
+              - name
+              - 'Opening Time'
+            -
+              - handle
+              - open
+      -
+        - close
+        -
+          __assoc__:
+            -
+              - name
+              - 'Closing Time'
+            -
+              - handle
+              - close
+translationKeyFormat: null
+translationMethod: none
+type: craft\storehours\Field

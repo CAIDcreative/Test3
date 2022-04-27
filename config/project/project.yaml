@@ -1,32 +1,316 @@
-dateModified: 1651027895
+dateModified: 1651044827
 email:
-  fromEmail: steven@madedigital.group
-  fromName: Test3
-  replyToEmail: null
-  template: null
+  fromEmail: $EMAIL_ADDRESS
+  fromName: $EMAIL_SENDER_NAME
+  replyToEmail: $EMAIL_ADDRESS
+  template: ''
   transportSettings:
-    encryptionMethod: none
-    host: mailhog.service.nitro
-    password: ''
-    port: '1025'
+    encryptionMethod: ssl
+    host: $EMAIL_HOST_NAME
+    password: $EMAIL_PASSWORD
+    port: $EMAIL_PORT
     timeout: '10'
-    useAuthentication: '0'
-    username: ''
+    useAuthentication: '1'
+    username: $EMAIL_USERNAME
   transportType: craft\mail\transportadapters\Smtp
 meta:
   __names__:
-    9efdd198-38ba-4a6e-9833-bf4a33b313a0: Common # Common
-    a390ad47-c1bf-4bf1-97d2-0ec3600bc110: Test3 # Test3
-    f715aa93-4bdb-4870-bc26-e03d2327805b: Test3 # Test3
+    0aad1116-53df-42ec-aa16-8de7e04ea14e: 'Other Settings' # Other Settings
+    3ae341fa-da25-437b-b723-1d467a54179e: Paragraph # Paragraph
+    8b8feb79-1046-4b14-9556-2eafb772496b: Heading # Heading
+    19d090b1-0d85-4566-b785-619a8ccae5df: Paragraph # Paragraph
+    62f8af7c-5deb-45d2-a876-da0b89d04e78: 'Contact Information' # Contact Information
+    63c08f43-8559-41bb-a599-c1a6c0e705f2: 'Footer Options' # Footer Options
+    93cb2cb0-8906-43ce-a5b2-ecf89891884e: 'Large Image' # Large Image
+    375ad989-34bb-47bb-829c-b8fb8d4ab286: Heading # Heading
+    858e3914-a29f-480d-aba6-c072296b11e4: 'Embed Url' # Embed Url
+    5016622d-8eaf-4d4e-9dad-e0fc6c20380e: 'Paragraph Primary BG' # Paragraph Primary BG
+    89005538-c4df-4767-9f4a-2ebc9e74ff44: Heading # Heading
+    a1100959-2fe0-4003-8295-7dd9d4701692: 'Large Heading' # Large Heading
+    d5f9b31e-340a-47b4-9324-8b6a19acbf5c: Paragraph # Paragraph
+    d7d77960-d953-455d-a7f9-28d6c6dfb833: 'Inner Page Matrix' # Inner Page Matrix
+    ebd020af-4726-4f3d-a2ce-7f685603325a: 'Small Heading' # Small Heading
+    ec09d5c1-dd37-42e7-9a60-d98c37525a85: Caption # Caption
+    ec65a260-aacf-44e9-ae4a-6e55460b771c: 'SEO GLOBALS' # SEO GLOBALS
+    ec7283dd-0f86-409b-806b-1f1bf985d230: Image # Image
+    f5da6368-64f4-404f-9cc5-de3d4aba5977: Video # Video
+    f6311727-4294-47fe-b44f-960aea386c97: 'Social Links' # Social Links
+plugins:
+  admin-bar:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.1.0
+    settings:
+      customCss: ''
+      customLinks:
+        -
+          adminOnly: ''
+          linkLabel: ''
+          linkUrl: ''
+      displayDashboardLink: true
+      displayDefaultEditSection: true
+      displayEditAuthor: true
+      displayEditDate: true
+      displayGreeting: true
+      displayGuideLink: true
+      displayLogout: true
+      displayRevisionNote: true
+      displaySettingsLink: true
+      enableMobileMenu: true
+      widgets:
+        admin-bar_edit-links: '1'
+  blitz:
+    edition: standard
+    enabled: true
+    licenseKey: 18DPG1KXT129C403MI87L7YF
+    schemaVersion: 3.10.0
+    settings:
+      apiKey: ''
+      cacheControlHeader: 'public, s-maxage=31536000, max-age=0'
+      cacheDuration: null
+      cacheElementQueries: true
+      cacheElements: true
+      cachePurgerType: putyourlightson\blitz\drivers\purgers\DummyPurger
+      cacheStorageSettings:
+        __assoc__:
+          -
+            - folderPath
+            - '@webroot/cache/blitz'
+          -
+            - createGzipFiles
+            - ''
+      cacheStorageType: putyourlightson\blitz\drivers\storage\FileStorage
+      cacheWarmerSettings:
+        __assoc__:
+          -
+            - concurrency
+            - '3'
+      cacheWarmerType: putyourlightson\blitz\drivers\warmers\GuzzleWarmer
+      cachingEnabled: ''
+      clearCacheAutomatically: '1'
+      customSiteUris: ''
+      debug: false
+      deployerType: putyourlightson\blitz\drivers\deployers\DummyDeployer
+      driverJobPriority: 100
+      excludedQueryStringParams:
+        - gclid
+        - fbclid
+      excludedUriPatterns: ''
+      includedUriPatterns:
+        -
+          __assoc__:
+            -
+              - uriPattern
+              - '.*'
+      injectScriptEvent: DOMContentLoaded
+      integrations:
+        - putyourlightson\blitz\drivers\integrations\FeedMeIntegration
+        - putyourlightson\blitz\drivers\integrations\SeomaticIntegration
+      mutexTimeout: 1
+      outputComments: true
+      queryStringCaching: '0'
+      refreshCacheAutomaticallyForGlobals: true
+      refreshCacheJobPriority: 10
+      refreshCacheWhenElementSavedNotLive: false
+      refreshCacheWhenElementSavedUnchanged: false
+      sendPoweredByHeader: true
+      warmCacheAutomatically: '1'
+  cp-field-inspect:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  freeform:
+    edition: pro
+    enabled: true
+    licenseKey: ZOLK3EHOMF97GL0VM08I5L21
+    schemaVersion: 3.6.3
+    settings:
+      ajaxByDefault: ''
+      alertNotificationRecipients: admin@madedigital.group
+      autoScroll: '1'
+      autoScrollToErrors: '1'
+      badgeType: all
+      blockedEmails: "lena.tikhonova.202065034@gmail.com\r\nkirillognevv@gmail.com\r\nr1ch4rdw444656tersdon@gmail.com\r\ncystalld@eagleandtails.com\r\nskins@wrpills.com\r\nandreytichonov52@gmail.com\r\nfilat19890@gmail.com\r\nr1ch4rdw444656tersdon@gmail.com\r\nmaryhamilton3086@gmail.com\r\nannapoole3570@gmail.com\r\nshirajoy1992@gmail.com\r\npodlikana@mail.ru\r\nfilat19890@gmail.com\r\ntest13th@gmail.com\r\nPolikahin1590@mozillamail.com\r\nNagoj0737@mozillamail.com\r\nyana.rasskazikhina.73@mail.ru\r\nlauryn.jayne@yahoo.com\r\nirit@navigatortrans.ru\r\nno-replysuhexids@gmail.com\r\nkuban.photography@bk.ru\r\nfgfdsfhjjhkj@yandex.com\r\nadmin3@hedevpoc.pro"
+      blockedEmailsError: 'Invalid Email Address'
+      blockedIpAddresses: "185.255.96.99\r\n178.159.37.85\r\n92.38.136.69\r\n85.209.89.243\t\r\n92.38.136.69\r\n45.147.161.135\t\r\n185.166.87.201\r\n47.247.66.222\r\n78.138.157.42\r\n91.247.235.57\t\r\n135.181.75.243\r\n37.113.187.152\r\n195.181.170.88\r\n185.104.184.121\r\n92.255.198.132\t\r\n46.21.250.205\r\n84.17.51.101"
+      blockedKeywords: "digitbazar.com\r\ncongrats\r\ncongratulations\r\nDeposited\r\nCongrats!\r\nbitcoin\r\ncrypto\r\ncryptocurrency\r\nSEO\r\nbitcoin\r\nMarketing\r\nkeywords\r\nkeyword"
+      blockedKeywordsError: 'Invalid Entry Data'
+      clientDigestFrequency: 1
+      clientDigestRecipients: null
+      customErrorMessage: ''
+      customHoneypotName: ''
+      defaultTemplates: '1'
+      defaultView: dashboard
+      digestFrequency: 1
+      digestOnlyOnProduction: false
+      digestRecipients: null
+      displayFeed: true
+      emailTemplateDirectory: ''
+      emailTemplateStorage: db
+      fieldDisplayOrder: name
+      fillWithGet: '1'
+      footerScripts: false
+      formFieldShowOnlyAllowedForms: false
+      formSubmitDisable: ''
+      formSubmitExpiration: ''
+      formTemplateDirectory: _freeform-templates/
+      formattingTemplate: flexbox.html
+      freeformHoneypot: '1'
+      freeformHoneypotEnhancement: ''
+      hideBannerDemo: '1'
+      hideBannerOldFreeform: false
+      minimumSubmitTime: ''
+      pluginName: ''
+      purgableSpamAgeInDays: '60'
+      purgableSubmissionAgeInDays: '0'
+      purgableUnfinalizedAssetAgeInMinutes: 180
+      recaptchaBehaviour: display_error
+      recaptchaEnabled: '1'
+      recaptchaErrorMessage: 'Please verify that you are not a robot.'
+      recaptchaKey: 6LcaEtQUAAAAAEDZ5NCPkTH8jqF1vGjU2asXyxgZ
+      recaptchaLazyLoad: false
+      recaptchaMinScore: '0.5'
+      recaptchaSecret: 6LcaEtQUAAAAABZJLoQBc6hIWWqZ1r-f03JA0g_f
+      recaptchaSize: normal
+      recaptchaTheme: light
+      recaptchaType: v2_invisible
+      rememberPageSubmitOrder: '1'
+      removeNewlines: ''
+      renderFormHtmlInCpViews: '1'
+      salesforce_client_id: null
+      salesforce_client_secret: null
+      salesforce_password: null
+      salesforce_username: null
+      saveFormSessionLimit: '10'
+      saveFormTtl: '30'
+      scriptInsertLocation: footer
+      scriptInsertType: pointers
+      sessionContext: payload
+      sessionContextCount: '100'
+      sessionContextSecret: ''
+      sessionContextTimeToLiveMinutes: '180'
+      sessionEntryMaxCount: 50
+      sessionEntryTTL: 10800
+      showErrorsForBlockedEmails: ''
+      showErrorsForBlockedKeywords: ''
+      showTutorial: ''
+      spamFolderEnabled: '1'
+      spamProtectionBehaviour: simulate_success
+      submissionThrottlingCount: '10'
+      submissionThrottlingTimeFrame: m
+      twigInHtml: true
+      twigInHtmlIsolatedMode: true
+      updateSearchIndexes: true
+  image-helper:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  instant-analytics:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+    settings:
+      adminExclude: false
+      autoSendAddToCart: true
+      autoSendPageView: true
+      autoSendPurchaseComplete: true
+      autoSendRemoveFromCart: true
+      createGclidCookie: true
+      filterBotUserAgents: true
+      googleAnalyticsTracking: UA-52752743-2
+      logExcludedAnalytics: true
+      productBrandField: ''
+      productCategoryField: ''
+      sendAnalyticsData: true
+      sendAnalyticsInDevMode: true
+      serverExcludes:
+        __assoc__:
+          -
+            - REMOTE_ADDR
+            -
+              - '/^localhost$|^127(?:\.[0-9]+){0,2}\.[0-9]+$|^(?:0*\:)*?:?0*1$/'
+      stripQueryString: true
+  logs:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0
+  minifier:
+    edition: standard
+    enabled: true
+    licenseKey: AWG1JM9R0L0QK8TWPBKEZIJ5
+    schemaVersion: 1.0.0
+    settings:
+      cssPath: '@webroot/assets/css'
+      cssUrl: '@web/assets/css'
+      disableAdmin: false
+      enableDevMode: false
+      jsPath: '@webroot/assets/js'
+      jsUrl: '@web/assets/js'
+  patrol:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0
+    settings:
+      maintenanceModeAuthorizedIps:
+        - '::1'
+        - 127.0.0.1
+      maintenanceModeEnabled: ''
+      maintenanceModePageUrl: /offline
+      maintenanceModeResponseStatusCode: 403
+      primaryDomain: ''
+      redirectStatusCode: 302
+      sslRoutingBaseUrl: ''
+      sslRoutingEnabled: '1'
+      sslRoutingRestrictedUrls:
+        - /
+  queue-manager:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+  remote-sync:
+    edition: standard
+    enabled: true
+    licenseKey: N4SU0YOFC6ABHPJHZ2YFGM1E
+    schemaVersion: 1.0.0
+  seomatic:
+    edition: standard
+    enabled: true
+    licenseKey: H9BJ2R02CM3XD00A2JR4B2RX
+    schemaVersion: 3.0.11
+  sprout-fields:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.5.3
+  store-hours:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.2
+  svgplaceholder:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  twig-perversion:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  wordsmith:
+    edition: standard
+    enabled: true
+    schemaVersion: 0.0.0.0
 system:
-  edition: solo
+  edition: pro
   live: true
-  name: Test3
+  name: 'Sleep Dentistry Melbourne'
+  retryDuration: null
   schemaVersion: 3.7.33
-  timeZone: America/Los_Angeles
+  timeZone: Australia/Melbourne
 users:
   allowPublicRegistration: false
   defaultGroup: null
-  photoSubpath: null
+  photoSubpath: ''
   photoVolumeUid: null
   requireEmailVerification: true

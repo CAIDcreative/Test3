@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Update Form</title>
+</head>
+	{% set tokenParameter =  craft.app.request.getParam('id') %}
+	{% set submission = craft.freeform.submissions({ form: 'testNotification', token: tokenParameter }).one() %}
+
+	{% if submission | length %}
+		<body onload="document.form1.submit()">
+		    {% set submissionToken = submission.token %}
+
+		    {% set form = craft.freeform.form("testNotification", {
+		        submissionToken: submissionToken|default(null),
+		        name: "form1",
+		        status: "closed",
+		        returnUrl: (siteUrl("test")),
+		        formAttributes: {
+		        	style: "display: none;",
+		        },
+		        suppress: {
+		            adminNotifications: true,
+		            dynamicRecipients: true,
+		            submitterNotifications: true,
+		            api: true
+		        }
+		    }) %}
+		    {{ form.render() }}
+		</body>
+	{% else %}
+		<body>
+			<p>Error: No submission with that ID.</p>
+		</body>
+	{% endif %}
+</html>

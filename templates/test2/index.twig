@@ -1,0 +1,23 @@
+{# 
+    CAIDcreative/sleepdentistrymelbourne 
+    locations/index.twig 
+#}
+
+    {% extends "_layouts/main" %} 
+
+    {% import "_macros/images" as images %} 
+    {% import "_macros/templates" as templates %} 
+
+    {% block main %}
+        <div class="main main-shadow">
+            <div class="my-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            {{ craft.imageHelper.filename("test.jpg").render }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

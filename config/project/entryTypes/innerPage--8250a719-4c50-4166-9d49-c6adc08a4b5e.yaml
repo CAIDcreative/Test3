@@ -1,0 +1,49 @@
+fieldLayouts:
+  52f47ec9-b91d-43f6-b12d-fb0ec52bae85:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: e530895c-6de1-4790-be9a-88222af380aa
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: d7d77960-d953-455d-a7f9-28d6c6dfb833 # Inner Page Matrix
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 53919104-bd07-434f-9abc-39c6cfe7baf6
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Inner Page'
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: d7583edf-ba9b-4bd8-a32a-77ea7655ec8f
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: b15ca5cb-e30d-4fc3-b518-2c18dd66bb00
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: e8a6d443-d5a6-47d6-b808-20286df833b6
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 62caa9dc-1699-4df1-aede-d8715a247d78
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: SEO
+        sortOrder: 2
+handle: innerPage
+hasTitleField: true
+name: 'Inner Page'
+section: 8c7c530a-8703-477b-8dd2-45492edf1bfd
+sortOrder: 1
+titleFormat: ''

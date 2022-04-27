@@ -1,0 +1,17 @@
+contentColumnType: text
+fieldGroup: 11ab0173-7b99-44a4-a1c0-982ac93b46b1
+handle: contactMainPhone
+instructions: ''
+name: 'Contact Main Phone'
+searchable: true
+settings:
+  country: AU
+  customPatternErrorMessage: ''
+  customPatternToggle: null
+  inputMask: null
+  limitToSingleCountry: '1'
+  mask: null
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: barrelstrength\sproutfields\fields\Phone

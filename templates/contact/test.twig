@@ -1,0 +1,62 @@
+{# 
+    CAIDcreative/sleepdentistrymelbourne
+    contact/index.twig 
+#} 
+
+{% extends "_layouts/main" %} 
+
+{% import "_macros/images" as images %} 
+{% import "_macros/templates" as templates %} 
+
+{% block main %}
+
+    <div class="main main-shadow">
+        {{ templates.printStrandardHeader(entry) }}
+        <div class="contact-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 my-5">
+                        {#
+                        {% set locationVar = craft.app.request.getParam("location") %}
+                        {% set locationSelect = {
+                            "Burwood East": "melbourne@allon4.com.au",
+                            "Brunswick": "brunswick@allon4.com.au",
+                            "Armadale": "armadale@allon4.com.au",
+                            "Kew": "kew@allon4.com.au",
+                        } %}
+                        <span>{{ locationSelect[locationVar] }}</span>
+                        #}
+
+                        {{ craft.freeform.form("teethWhiteningOffer").render({ 
+                                overrideValues: {
+                                    preferredClinicEmail: "3"
+                                } 
+                            }) 
+                        }}
+                    </div>
+                    <div class="col-md-3 ml-auto my-5">
+                        {% set locations = craft.entries.section('locations').all() %}
+                        {% for location in locations %}
+                            <div class="">
+                                <h5 class="h3 m-0 p-0 text-primary text-uppercase align-items-center">
+                                    <a href="{{ location.url }}" class="text-primary font-weight-bold">{{ location.title }}</a>
+                                </h5>
+                                <ul>
+                                    <li class="text-dark">
+                                        <span class="text-dark-primary">Tel: </span><a href="{{ location.locationPhone.RFC3966 }}" class="text-secondary">{{ location.locationPhone.phone }}</a>
+                                    </li>
+                                    <li class="text-dark">
+                                        <span class="text-dark-primary">Address: </span>{{ location.locationAddress.address1 ~ ", " ~ location.locationAddress.administrativeArea ~ " " ~ location.locationAddress.administrativeAreaCode }}
+                                    </li>
+                                    <li class="text-dark">
+                                        <span class="text-dark-primary">Hours: </span>{{ location.locationShortStoreHours }}
+                                    </li>
+                                </ul>
+                        	</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+enableVersioning: true
+handle: bookAppointment
+name: 'Book Appointment'
+propagationMethod: all
+siteSettings:
+  cc6fa99a-ca93-4981-b944-2d8003b95c5b:
+    enabledByDefault: true
+    hasUrls: true
+    template: book-appointment/index
+    uriFormat: book-appointment
+type: single

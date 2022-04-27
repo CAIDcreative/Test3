@@ -1,0 +1,28 @@
+{# 
+	CAIDcreative/sleepdentistrymelbourne
+	404.twig
+#}
+
+{% extends "_layouts/main" %}
+
+{% import "_macros/images" as images %}
+{% import "_macros/templates" as templates %}
+
+{% block main %}
+    <div class="main main-shadow">
+		<section class="section section-basic">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-lg-8 my-5">
+						<h1>404 - Page not found.</h1>
+						<a href="{{ siteUrl }}"><< Return to main page.</a>
+					</div>
+					<div class="col-12 col-lg-8 mb-0">
+						<h3 class="text-primary">Or click one of these links:</h3>
+					</div>
+					{{ templates.printRelatedEntriesSquares([], "asjhgdjhugasgauydsuyg") }}
+				</div>
+			</div>
+		</section>
+	</div>
+{% endblock %}

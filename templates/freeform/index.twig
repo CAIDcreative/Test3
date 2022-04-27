@@ -1,0 +1,5 @@
+{% if currentUser and currentUser.admin %}
+	{% redirect "freeform/forms" %}
+{% endif %}
+
+{% redirect siteUrl %}

@@ -1,0 +1,12 @@
+contentColumnType: string(1000)
+fieldGroup: 01f54834-a45f-4dcf-941f-c88597c01fa6
+handle: locationMapUrl
+instructions: ''
+name: 'Location Map Url'
+searchable: true
+settings:
+  maxLength: '1000'
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Url

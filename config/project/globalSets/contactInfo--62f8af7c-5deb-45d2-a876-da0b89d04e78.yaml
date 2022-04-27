@@ -1,0 +1,16 @@
+fieldLayouts:
+  f6b21a13-9e54-4d1d-92bf-850f5bc02890:
+    tabs:
+      -
+        fields:
+          98c902ff-d0c5-4892-bce7-fdd28683e26a:
+            required: false
+            sortOrder: 2
+          965c29b4-6aa4-4a7b-9a55-e1827399d0cf:
+            required: false
+            sortOrder: 1
+        name: 'Contact Infomation'
+        sortOrder: 1
+handle: contactInfo
+name: 'Contact Information'
+sortOrder: 2

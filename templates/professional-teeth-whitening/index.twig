@@ -1,0 +1,34 @@
+{# 
+    CAIDcreative/sleepdentistrymelbourne
+    teeth-whitening-offer/index.twig 
+#} 
+
+{% extends "_layouts/main" %} 
+
+{% block main %}
+
+    {% set mainImage = craft.imageHelper.filename('dental_checkup_flipped.jpg') %}
+    <div class="page-header clear-filter" data-parallax="false" style="background-image: url('{{ mainImage.url }}'); background-position: left center; height: inherit !important; min-height: 80vh; padding-top: 5em; padding-bottom: 5em;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 offset-md-4 col-md-8 offset-xl-5 col-xl-7">
+                    <div class="card p-3 mt-0" style="background: #fffe;">
+                        <div class="card-header card-header-dark-primary mb-3">
+                            <h1 class="text-white text-uppercase text-center my-0">Teeth Whitening</h1>
+                        </div>
+                        <div class="card-body p-0 p-lg-3">
+                            <h2 class="text-secondary text-center text-uppercase my-1">Offers Starting From $300</h2>
+                            <p class="text-center">To contact us please fill out the form below. <br/>Alternatively, you can contact us on <a href="{{ contactInfo.contactMainPhone.RFC3966 }}">{{ contactInfo.contactMainPhone.phone }}.</a></p>
+                            
+                            {{ craft.freeform.form("teethWhiteningOffer").render() }}
+
+                            <p style="font-size: 12px;">(Please note: one of our Sleep Dentistry Melbourne team will contact you to verify &amp; confirm your appointment time).
+                            <br/>This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+enableVersioning: true
+handle: professionalTeethWhitening
+name: 'Professional Teeth Whitening'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  cc6fa99a-ca93-4981-b944-2d8003b95c5b:
+    enabledByDefault: true
+    hasUrls: true
+    template: professional-teeth-whitening/index
+    uriFormat: professional-teeth-whitening
+type: single

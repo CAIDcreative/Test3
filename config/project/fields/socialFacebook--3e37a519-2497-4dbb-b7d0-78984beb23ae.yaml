@@ -1,0 +1,12 @@
+contentColumnType: string(255)
+fieldGroup: f1759689-b13f-4dce-9237-dc239d851a44
+handle: socialFacebook
+instructions: ''
+name: 'Social Facebook'
+searchable: true
+settings:
+  maxLength: '255'
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Url

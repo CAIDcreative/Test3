@@ -1,0 +1,16 @@
+fieldLayouts:
+  9152dd1d-000e-4a6d-88f6-35607cec85f9:
+    tabs:
+      -
+        fields:
+          0f17cfb4-d508-4bbd-998e-180cf1a97de5:
+            required: false
+            sortOrder: 1
+          66cfbc80-ea1a-4e23-a6d6-f78704c434d0:
+            required: false
+            sortOrder: 2
+        name: 'Footer Menus'
+        sortOrder: 1
+handle: footerOptions
+name: 'Footer Options'
+sortOrder: 3

@@ -1,0 +1,433 @@
+{# 
+	CAIDcreative/sleepdentistrymelbourne
+	_layouts/main.twig
+
+	{% extends "_layouts/main" %}
+#}
+
+{% import "_macros/images" as images %}
+{% import "_macros/templates" as templates %}
+
+{# SET URLS #}
+{% set mainPageUrl = siteUrl %}
+
+{% set locationsUrl = siteUrl ~ "locations" %}
+{% set newsUrl = siteUrl ~ "news" %}
+{% set paymentPlansUrl = siteUrl ~ "payment-plans" %}
+{% set bookAppointmentUrl = siteUrl ~ "book-appointment" %}
+{% set sleepDentistryUrl = siteUrl ~ "sleep-dentistry" %}
+{% set ourServicesUrl = siteUrl ~ "services" %}
+{% set improveMySmileUrl = siteUrl ~ "improve-my-smile" %}
+{% set contactUrl = siteUrl ~ "contact" %}
+{% set privacyUrl = siteUrl ~ "privacy" %}
+
+{# THEME #}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% block head %} 
+			<meta charset="UTF-8">
+			
+			<!-- Google Tag Manager -->
+			<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-W3BRRLT');</script>
+			<!-- End Google Tag Manager -->
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-52752743-2"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-52752743-2');
+			</script>
+			
+			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+			<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+			<link href="https://fonts.googleapis.com/css?family=Asap:400,600,700|Poppins:400,500,600,700|Oswald|Material+Icons&display=swap" rel="stylesheet">
+			{% do minifier.view.registerCssFile('/material-kit.css') %}
+        	{% do minifier.view.registerCssFile('/lazyload.css') %}
+			{% do minifier.view.registerCssFile('/custom.css') %}
+			<link rel="stylesheet" href="https://use.typekit.net/xmk7bsy.css">
+			<link rel="apple-touch-icon" sizes="57x57"   href="{{ siteUrl }}assets/images/apple-icon-57x57.png">
+			<link rel="apple-touch-icon" sizes="60x60"   href="{{ siteUrl }}assets/images/apple-icon-60x60.png">
+			<link rel="apple-touch-icon" sizes="72x72"   href="{{ siteUrl }}assets/images/apple-icon-72x72.png">
+			<link rel="apple-touch-icon" sizes="76x76"   href="{{ siteUrl }}assets/images/apple-icon-76x76.png">
+			<link rel="apple-touch-icon" sizes="114x114" href="{{ siteUrl }}assets/images/apple-icon-114x114.png">
+			<link rel="apple-touch-icon" sizes="120x120" href="{{ siteUrl }}assets/images/apple-icon-120x120.png">
+			<link rel="apple-touch-icon" sizes="144x144" href="{{ siteUrl }}assets/images/apple-icon-144x144.png">
+			<link rel="apple-touch-icon" sizes="152x152" href="{{ siteUrl }}assets/images/apple-icon-152x152.png">
+			<link rel="apple-touch-icon" sizes="180x180" href="{{ siteUrl }}assets/images/apple-icon-180x180.png">
+			<link rel="icon" type="image/png" sizes="32x32" href="{{ siteUrl }}assets/images/favicon-32x32.png">
+			<link rel="icon" type="image/png" sizes="96x96" href="{{ siteUrl }}assets/images/favicon-96x96.png">
+			<link rel="icon" type="image/png" sizes="16x16" href="{{ siteUrl }}assets/images/favicon-16x16.png">
+
+			
+			<!-- Facebook Pixel Code -->
+			<script>
+			  !function(f,b,e,v,n,t,s)
+			  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+			  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+			  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+			  n.queue=[];t=b.createElement(e);t.async=!0;
+			  t.src=v;s=b.getElementsByTagName(e)[0];
+			  s.parentNode.insertBefore(t,s)}(window, document,'script',
+			  'https://connect.facebook.net/en_US/fbevents.js');
+			  fbq('init', '553573512170116');
+			  fbq('track', 'PageView');
+			</script>
+			<noscript><img height="1" width="1" style="display:none"
+			  src="https://www.facebook.com/tr?id=553573512170116&ev=PageView&noscript=1"
+			/></noscript>
+			<!-- End Facebook Pixel Code -->
+			{#
+			<script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: 'fea56544-2eb6-4b2a-a871-d41c93907a16', f: true }); done = true; } }; })();</script>
+			#}
+			
+		{% endblock %}
+	</head>
+	<body class="index-page sidebar-collapse">
+
+		{% block body %}
+		    {% set theEntry = entry is defined ? entry: none %}
+		    
+			{% if currentUser %}
+			    {% do craft.blitz.options().cachingEnabled(false) %}
+				{{ adminbar({ entry: theEntry}) }}
+			{% endif %}
+
+			<!-- The social media icon bar -->
+			<div class="icon-bar d-none d-lg-block">
+				{% if socialLinks.socialFacebook 	| length %} <a href="{{ socialLinks.socialFacebook }}" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a> 	{% endif %}
+				{% if socialLinks.socialInstagram 	| length %} <a href="{{ socialLinks.socialInstagram }}" class="instagram"><i class="fa fa-instagram"></i></a> 				{% endif %}
+				{% if socialLinks.socialTwitter 	| length %} <a href="{{ socialLinks.socialTwitter }}" class="twitter"><i class="fa fa-twitter"></i></a> 					{% endif %}
+				{% if socialLinks.socialYoutube 	| length %} <a href="{{ socialLinks.socialYoutube }}" class="youtube"><i class="fa fa-youtube"></i></a> 					{% endif %}
+			</div>
+
+			{% block nav %}
+				<nav class="navbar navbar-default navbar-expand-lg bg-primary mb-0 py-0 flex-column" id="sectionsNav">
+					<div class="bg-white w-100">
+						<div class="container navbar-translate flex-column">
+				        	<div class="row d-flex d-md-none align-self-end-nav-open">
+				        		<div class="col d-flex justify-content-center">
+				        			<a href="{{ contactInfo.contactMainPhone.RFC3966 }}" class="my-2 d-flex justify-content-center align-items-center text-primary text-bold"><i class="material-icons">phone</i><span class="text-nowrap">{{ contactInfo.contactMainPhone.phone }}</span></a>
+				        		</div>
+				        	</div>
+				        	<div class="row justify-content-between align-items-center d-none d-md-flex">
+				        		<div class="col-6">
+				        			<a href="{{ locationsUrl }}"class="text-primary h3 my-2">Now with 6 locations in Victoria!</a>
+				        		</div>
+				        		<div class="col-6 justify-content-end d-flex">
+				        			<ul class="list-inline mb-0">
+				        				<li class="list-inline-item"><a href="{{ paymentPlansUrl }}"><p class="my-2 text-primary mr-2">Payment Plans</p></a></li>
+				        				<li class="list-inline-item"><a href="{{ newsUrl }}"><p class="my-2 text-primary mr-2">Blog</p></a></li>
+				        				<li class="list-inline-item"><a href="{{ locationsUrl }}"><p class="my-2 text-primary">Our Locations</p></a></li>
+				        			</ul>
+				        		</div>
+				        	</div>
+				        </div>
+				    </div>
+					<div class="container">
+						<div class="navbar-translate">
+							<a class="navbar-brand" href="{{ siteUrl }}">
+								{{ images.filename("logo.png", {class: "logo",}) }}
+							</a>	
+							<button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="navbar-toggler-icon"></span>
+								<span class="navbar-toggler-icon"></span>
+								<span class="navbar-toggler-icon"></span>
+							</button>
+						</div>
+						<div class="collapse navbar-collapse flex-column align-items-end">
+							<div class="d-flex flex-row align-items-center">
+								<a href="{{ contactInfo.contactMainPhone.RFC3966 }}" class="lead text-white text-nowrap h3 m-2" style="font-weight: 400;"><i class="material-icons">phone</i>{{ contactInfo.contactMainPhone.phone }}</a>
+								<a href="{{ bookAppointmentUrl }}" class="btn  btn-secondary   btn-round btn-block  m-2 text-bold">
+						            <i class="material-icons mr-1">calendar_today</i> Book Appointment
+				            		<div class="ripple-container"></div>
+				            	</a>
+							</div>
+							<ul class="navbar-nav ml-auto">
+								<li class="nav-item">
+									<a href="{{ mainPageUrl }}" class="nav-link">
+										Home
+									</a>
+								</li>
+
+								{% set innerPages = craft.entries().section('innerPages').level('1').all() %}
+								{% if innerPages | length %}
+									{% for innerPage in innerPages %}
+										<li class="dropdown nav-item">
+											<a href="{{ innerPage.url }}" class="dropdown-toggle nav-link" data-toggle="dropdown">
+												{{ innerPage.title }}
+											</a>
+											<div class="dropdown-menu">
+												{% if innerPage.children | length %}
+													{% for child in innerPage.children.all() %}
+														<a href="{{ child.url }}" class="dropdown-item">
+															{{ child.title }}
+														</a>
+													{% endfor %}
+												{% endif %}
+											</div>
+										</li>
+									{% endfor %}
+								{% endif %}
+
+
+								{#
+								<li class="dropdown nav-item">
+									<a href="{{ ourServicesUrl }}" class="dropdown-toggle nav-link" data-toggle="dropdown">
+										Sleep Dentistry
+									</a>
+									<div class="dropdown-menu dropdown-with-icons">
+										<a href="{{ innerpageUrl }}" class="dropdown-item">
+											What is sleep dentistry
+										</a>
+										<a href="{{ innerpageUrl }}" class="dropdown-item">
+											Anaesthetic Solutions
+										</a>
+										<a href="{{ innerpageUrl }}" class="dropdown-item">
+											On-site Facilities	
+										</a>
+										<a href="{{ innerpageUrl }}" class="dropdown-item">
+											Frequent Questions
+										</a>
+									</div>
+								</li>
+								<li class="dropdown nav-item">
+									<a href="{{ ourServicesUrl }}" class="dropdown-toggle nav-link" data-toggle="dropdown">
+										Our Services
+									</a>
+									<div class="dropdown-menu dropdown-with-icons">
+										<a href="{{ innerpageUrl }}" class="dropdown-item">
+											General Dentistry
+										</a>
+										<a href="{{ innerpageUrl }}" class="dropdown-item">
+											Cosmetic Dentistry
+										</a>
+										<a href="{{ innerpageUrl }}" class="dropdown-item">
+											Children's Dentistry
+										</a>
+										<a href="{{ innerpageUrl }}" class="dropdown-item">
+											Dental Implants
+										</a>
+										<a href="{{ innerpageUrl }}" class="dropdown-item">
+											Oral Health
+										</a>
+									</div>
+								</li>
+								<li class="dropdown nav-item">
+									<a href="{{ ourServicesUrl }}" class="dropdown-toggle nav-link" data-toggle="dropdown">
+										Improve my smile
+									</a>
+									<div class="dropdown-menu dropdown-with-icons">
+										<a href="{{ innerpageUrl }}" class="dropdown-item">
+											Straighter Smile
+										</a>
+										<a href="{{ innerpageUrl }}" class="dropdown-item">
+											Porcelain Veneers
+										</a>
+										<a href="{{ innerpageUrl }}" class="dropdown-item">
+											Dental Cleans
+										</a>
+										<a href="{{ innerpageUrl }}" class="dropdown-item">
+											Gummy Smile
+										</a>
+										<a href="{{ innerpageUrl }}" class="dropdown-item">
+											Cosmetic &amp; Therapeutic Injections
+										</a>
+									</div>
+								</li>
+								#}
+								<li class="nav-item">
+									<a href="{{ contactUrl }}" class="nav-link">
+										Contact
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			{% endblock nav %}
+
+			{% block main %}
+
+			{% endblock %}
+
+			{% block footer %}
+				<section class="section section-basic bg-primary" style="z-index: 1000; position: relative;">
+					<div class="container">
+						<div class="row">
+							<div class="col-12 col-lg-7 d-flex align-items-center justify-content-center justify-content-lg-start">
+								<h2 class="h2 text-white font-weight-bold text-uppercase text-center text-left-lg">Dream your dental worries away...</h2>
+							</div>
+							<div class="col-12 col-lg-5">
+								<a href="{{ contactInfo.contactMainPhone.RFC3966 }}" class="d-flex align-items-center justify-content-center justify-content-lg-end">
+									<div class="d-none d-lg-block">
+										<span class="text-white h1 font-weight-bold text-uppercase"><i class="material-icons" style="font-size: 82px;">phone_iphone</i></span>
+									</div>
+									<div class="text-center">
+										<h3 class="text-white h1 font-weight-bold text-uppercase text-center mb-0" href="{{ contactInfo.contactMainPhone.RFC3966 }}">{{ contactInfo.contactMainPhoneword }}</h3>
+										<h3 class="text-white text-uppercase text-center mt-0">Call Us Today {{ contactInfo.contactMainPhone.phone }}</h3>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</section>
+				<footer class="footer footer-white footer-big bg-dark">
+					<div class="container">
+						<div class="content">
+							<div class="row">
+								<div class="col-md-3 d-flex justify-content-center justify-content-md-start">
+									<a href="{{ siteUrl }}">
+										{{ images.filename("logo.png", {class: "logo", style: "max-height: 120px;"}) }}
+									</a>
+								</div>
+								<div class="col-md-3 text-white d-flex align-items-center align-items-md-start flex-column">
+									<h3 class="text-primary text-uppercase">Services</h3>
+									{% set footerMenuEntries = footerOptions.footerServicesMenu %}
+									{% if footerMenuEntries | length %}
+										<ul class="links-vertical">
+											{% for footerEntry in footerMenuEntries.all() %}
+												<li>
+													<a href="{{ footerEntry.url }}">
+														{{ footerEntry.title }}
+													</a>
+												</li>
+											{% endfor %}
+										</ul>
+									{% endif %}
+								</div>
+								<div class="col-md-3 text-white d-flex align-items-center align-items-md-start flex-column">
+									<h3 class="text-primary text-uppercase">About Us</h3>
+									{% set footerMenuEntries = footerOptions.footerAboutUsMenu %}
+									{% if footerMenuEntries | length %}
+										<ul class="links-vertical">
+											{% for footerEntry in footerMenuEntries.all() %}
+												<li>
+													<a href="{{ footerEntry.url }}">
+														{{ footerEntry.title }}
+													</a>
+												</li>
+											{% endfor %}
+										</ul>
+									{% endif %}
+								</div>
+								<div class="col-md-3 d-flex align-items-center align-items-md-start flex-column">
+									<h3 class="text-primary text-uppercase">Follow Us</h3>
+									<ul class="social-buttons">
+										{% if socialLinks.socialFacebook | length %}
+											<li>
+												<a href="{{ socialLinks.socialFacebook }}" class="btn btn-just-icon btn-link btn-facebook text-primary">
+													<i class="fa fa-facebook-square" style="font-size: 42px;"></i>
+												</a>
+											</li>
+										{% endif %}
+										{% if socialLinks.socialInstagram | length %}
+											<li>
+												<a href="{{ socialLinks.socialInstagram }}" class="btn btn-just-icon btn-link btn-instagram text-primary">
+													<i class="fa fa-instagram" style="font-size: 42px;"></i>
+												</a>
+											</li>
+										{% endif %}
+										{% if socialLinks.socialTwitter | length %}
+											<li>
+												<a href="{{ socialLinks.socialTwitter }}" class="btn btn-just-icon btn-link btn-twitter text-primary">
+													<i class="fa fa-twitter" style="font-size: 42px;"></i>
+												</a>
+											</li>
+										{% endif %}
+										{% if socialLinks.socialYoutube | length %}
+											<li>
+												<a href="{{ socialLinks.socialYoutube }}" class="btn btn-just-icon btn-link btn-twitter text-primary">
+													<i class="fa fa-youtube" style="font-size: 42px;"></i>
+												</a>
+											</li>
+										{% endif %}
+									</ul>
+									<br/>
+									<h3 class="text-primary text-uppercase">Call us today!</h3>
+									<ul class="links-vertical">
+										<li><a href="{{ contactInfo.contactMainPhone.RFC3966 }}" class="text-white">{{ contactInfo.contactMainPhone.phone }}</a></li>
+										<li><a href="{{ contactInfo.contactMainPhone.RFC3966 }}" class="text-white">{{ contactInfo.contactMainPhoneword }}</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<hr/>
+						<p class="disclaimer">
+							<strong class="text-grey">DISCLAIMER:</strong> The procedures described in this website may not be suitable for all patients. Any before and after pictures are examples only and should not be relied upon because results do vary. References as to the impact of treatment on the quality of life or timeframes given for any particular treatment are also examples only and may not represent what is possible or advocated for a patient's individual circumstances, concerns or desires. A full assesment by one of our qualified dentists is required before any recommendations can be provided. All our dentists are registered as such with AHPRA. Every surgical or dental procedure carries risks. Before and after pictures may an accurate comparison due to differences in composition, different hair and the presence of make-up and lipstick. Please click on Terms and Conditions to read a full disclosure statement.
+						</p>
+						<hr/>
+						<div class="copyright pull-center text-white">
+							Copyright ©{{ "now" | date("Y") }} Sleep Dentistry Melbourne - All Rights Reserved.<br>
+							<small>This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</small>
+					</div>
+				</div>
+
+				{#
+										<!-- Button trigger modal -->
+				<button type="button" style="position: fixed; bottom: 20px; right: 10px; z-index:99999;" class="btn btn-secondary bg-secondary" data-toggle="modal" data-target="#exampleModalCenter">
+				  <span class="material-icons">message</span> Ask a question
+				</button>
+			</footer>
+
+
+			
+
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header bg-primary">
+							<h2 class="text-white" id="exampleModalLongTitle">  
+								<a href="{{ siteUrl }}">
+									{{ images.filename("logo.png", {class: "logo", style: "max-height: 60px;"}) }}
+								</a> 
+								Ask A Question
+							</h2>
+							<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body m-2">
+							{{ craft.freeform.form("quickChat").render() }}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			#}
+
+			{% endblock %}
+			{% block scripts %}
+
+				{% do minifier.view.registerJsFile('/core/jquery.min.js') %}
+				{% do minifier.view.registerJsFile('/core/popper.min.js') %}
+				{% do minifier.view.registerJsFile('/core/bootstrap-material-design.min.js') %}
+				{% do minifier.view.registerJsFile('/plugins/moment.min.js') %}
+				{% do minifier.view.registerJsFile('/plugins/bootstrap-datetimepicker.js') %}
+				{% do minifier.view.registerJsFile('/plugins/bootstrap-tagsinput.js') %}
+				{% do minifier.view.registerJsFile('/plugins/bootstrap-datetimepicker.js') %}
+				{% do minifier.view.registerJsFile('/plugins/bootstrap-tagsinput.js') %}
+				{% do minifier.view.registerJsFile('/plugins/bootstrap-selectpicker.js') %}
+				{% do minifier.view.registerJsFile('/plugins/jasny-bootstrap.min.js') %}
+				{% do minifier.view.registerJsFile('/plugins/jquery.flexisel.js') %}
+				{% do minifier.view.registerJsFile('/material-kit.js') %}
+				{% do minifier.view.registerJsFile('/plugins/nouislider.min.js') %}
+				{% do minifier.view.registerJsFile('/custom.js') %}
+				{% do minifier.view.registerJsFile('/lazysizes.min.js') %}
+
+				<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+			{% endblock %}
+		{% endblock %}
+
+	</body>
+</html>

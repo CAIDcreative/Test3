@@ -1,0 +1,18 @@
+contentColumnType: string
+fieldGroup: 92db3c22-8d75-444e-9f9e-b114b76080cf
+handle: footerServicesMenu
+instructions: ''
+name: 'Footer Services Menu'
+searchable: true
+settings:
+  limit: ''
+  localizeRelations: false
+  selectionLabel: ''
+  source: null
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: ''
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

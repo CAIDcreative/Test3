@@ -1,0 +1,17 @@
+contentColumnType: text
+fieldGroup: 11ab0173-7b99-44a4-a1c0-982ac93b46b1
+handle: contactMainPhoneword
+instructions: 'Mnemonic alphanumeric equivalent of the main telephone number.'
+name: 'Contact Main Phoneword'
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

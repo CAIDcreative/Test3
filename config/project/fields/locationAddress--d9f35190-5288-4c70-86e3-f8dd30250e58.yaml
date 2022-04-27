@@ -1,0 +1,16 @@
+contentColumnType: string
+fieldGroup: 01f54834-a45f-4dcf-941f-c88597c01fa6
+handle: locationAddress
+instructions: ''
+name: 'Location Address'
+searchable: true
+settings:
+  addressHelper: null
+  defaultCountry: AU
+  defaultLanguage: en-AU
+  hideCountryDropdown: null
+  showCountryDropdown: ''
+  value: null
+translationKeyFormat: null
+translationMethod: none
+type: barrelstrength\sproutfields\fields\Address

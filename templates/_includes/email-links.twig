@@ -1,0 +1,18 @@
+{% set statuses = {
+	"followUp": "To Follow Up",
+	"madeAppointment": "Customer made appointment",
+	"lapsed": "Lapsed",
+	"isSpam": "Is Spam",
+} %}
+
+<hr/>
+<h5>Update mail status:</h5>
+<ul style="display: inline;">
+{% for key, value in statuses %}
+	<li style="display: inline; list-style-type: none; padding-right: 20px;float: left;">
+		<a href="{{ siteUrl('freeform/update' ~ '?id=' ~ submission.token ~ '&status=' ~ key) }}" target="_blank">
+		    {{ value }}
+		</a>
+	</li>
+{% endfor %}
+</ul>

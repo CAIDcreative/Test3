@@ -1,0 +1,9 @@
+format: null
+handle: x1280x720
+height: 720
+interlace: none
+mode: crop
+name: x1280x720
+position: center-center
+quality: 60
+width: 1280

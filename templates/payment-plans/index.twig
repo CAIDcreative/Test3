@@ -1,0 +1,33 @@
+{# 
+    CAIDcreative/sleepdentistrymelbourne 
+    payment-plans/index.twig 
+#} 
+
+{% extends "_layouts/main" %}
+
+{% block main %}
+    <div class="main main-shadow">
+        {% include '_includes/standard-header' with {'entry': entry, } %}
+        <section class="section section-basic">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        {% include '_includes/breadcrumbs' with { 'entry': entry } %}
+                        
+                        {% set innerPageMatrix = entry.innerPageMatrix.all() %}
+                        {% include '_includes/inner-page-matrix' with { 'innerPageMatrix': innerPageMatrix } %}
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        {% include '_includes/sidebar-contact-form' %}
+                    </div>
+                </div>
+
+                <div class="col-12 my-5">
+                </div>
+                
+				{% set relatedEntries = entry.relatedEntries.all() %}
+				{% include '_includes/related-entries-squares' with {'relatedEntries': relatedEntries, } %}
+            </div>
+        </section>
+    </div>
+{% endblock %}

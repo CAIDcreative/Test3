@@ -1,0 +1,259 @@
+<style>
+	label.required:after{
+		content:"*";
+		color:#d00;
+		margin-left:5px
+	}
+	ul.errors{
+		display:block!important
+	}
+	.is-invalid{
+		color:#dc3545
+	}
+	.submit-align-left{
+		text-align:left
+	}
+	.submit-align-right{
+		text-align:right
+	}
+	.submit-align-center{
+		text-align:center
+	}
+	.submit-align-center button:not(:first-of-type),.submit-align-left button:not(:first-of-type),.submit-align-right button:not(:first-of-type){
+		margin-left:5px
+	}
+	.submit-align-spread button:first-child{
+		float:left
+	}
+	.submit-align-spread button:last-child{
+		float:right
+	}
+</style>
+
+{{ form.renderTag() }}
+
+{% if form.pages|length > 1 %}
+	<ul class="nav nav-pills nav-pills-primary justify-content-between">
+		{% for page in form.pages %}
+			<li class="nav-item">
+				{% if form.currentPage.index == page.index %}
+					<span class="nav-link active show">{{ page.label }}</a>
+				{% else %}
+					<span class="nav-link">{{ page.label }}</a>
+				{% endif %}
+			</li>
+		{% endfor %}
+	</ul>
+	<div class="progress progress-line-primary mt-4">
+		{% set progressPercent = (form.currentPage.index / (form.pages | length)) * 100 %}
+    	<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{ progressPercent }}" aria-valuemin="0" aria-valuemax="100" style="{{ "width:" ~  progressPercent ~ "%;"}}">
+      		<span class="sr-only">60% Complete</span>
+    	</div>
+  	</div>
+{% endif %}
+
+<div class="tab-content tab-space">
+	<div class="tab-pane active show">
+		{% if form.hasErrors %}
+			<div class="row {{ form.customAttributes.rowClass }}">
+				<div class="form-group col-sm-12 col-xs-12">
+					<span class="font-weight-bold text-secondary">{{ "Error! Please review the form and try submitting again."|t('freeform') }}</span>
+
+					{% if form.errors|length %}
+						<ul>
+							{% for error in form.errors %}
+								<li>{{ error }}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</div>
+			</div>
+		{% endif %}
+		{% for row in form %}
+			<div class="row {{ form.customAttributes.rowClass }}">
+				{% for field in row %}
+					{% set width = (12 / (row|length)) %}
+
+					{% set isCheckbox = field.type in ["checkbox","mailing_list"] %}
+
+					{% set columnClass = "" %}
+					{% set columnClass = columnClass ~ form.customAttributes.columnClass %}
+					{% set columnClass = columnClass ~ " col-sm-" ~ width ~ " col-xs-12" %}
+
+					{% set class = "form-control" ~ (field.hasErrors ? " is-invalid") %}
+					{% if field.type == "file" %}
+						{% set class = "form-control-file" ~ (field.hasErrors ? " is-invalid") %}
+					{% elseif isCheckbox %}
+						{% set class = "checkbox" %}
+					{% endif %}
+
+					{% set labelClass = "d-block text-primary form-control-label h3" ~ (field.required ? " required" : "") %} 
+					{% set errorClass = "invalid-feedback" %}
+					{% set instructionClass = "form-text text-muted" %}
+
+					{% if field.type == "submit" %}
+						{% set columnClass = columnClass ~ " submit-align-" ~ field.position %}
+					{% endif %}
+
+					<div class="{{ columnClass }}"{{ field.rulesHtmlData }}>
+						<div class="form-group label-floating bmd-form-group">
+							{% if field.type == "checkbox_group" %}
+								{{ field.renderLabel({
+									labelClass: labelClass,
+									instructionsClass: instructionClass,
+									errorClass: errorClass,
+								}) }}
+								{% for index, option in field.options %}
+									<label class="form-check-label pr-2" for="{{ field.idAttribute }}-{{ index }}">
+										<div class="form-check">
+											<input type="checkbox"
+											name="{{ field.handle }}[]"
+											value="{{ option.value }}"
+											id="{{ field.idAttribute }}-{{ index }}"
+											class="form-check-input {{ class }}"
+											{{ option.checked ? "checked" : "" }}
+											/>
+											{{ option.label|t|raw }}
+											<span class="form-check-sign">
+							                    <span class="check"></span>
+							                </span>
+										</div>
+									</label>
+								{% endfor %}
+
+								{{ field.renderInstructions() }}
+								{{ field.renderErrors({ errorClass: errorClass }) }}
+
+							{% elseif field.type == "radio_group" %}
+								{{ field.renderLabel({
+									labelClass: labelClass,
+									instructionsClass: instructionClass,
+									errorClass: errorClass,
+								}) }}
+
+								{% for index, option in field.options %}
+									<div class="form-check">
+										<label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+											<input type="radio"
+											name="{{ field.handle }}"
+											value="{{ option.value }}"
+											id="{{ field.idAttribute }}-{{ index }}"
+											class="form-check-input {{ class }}"
+											{{ option.checked ? "checked" : "" }}
+											/>
+											{{ option.label|t|raw }}
+											<span class="circle">
+							                    <span class="check"></span>
+							                </span>
+										</label>
+									</div>
+								{% endfor %}
+
+								{{ field.renderInstructions() }}
+								{{ field.renderErrors() }}
+
+							{% elseif field.type == "dynamic_recipients" and (field.showAsRadio or field.showAsCheckboxes) %}
+					
+								{{ field.renderLabel({
+									labelClass: labelClass,
+									instructionsClass: instructionClass,
+									errorClass: errorClass,
+								}) }}
+
+								{% for index, option in field.options %}
+									<div class="form-check">
+										<label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+											<input type="{{ field.showAsRadio ? "radio" : "checkbox" }}"
+												name="{{ field.handle }}[]"
+												value="{{ loop.index0 }}"
+												class="form-check-input {{ class }}"
+												id="{{ field.idAttribute }}-{{ index }}"
+												{{ option.checked ? "selected" : "" }}
+											/>
+											{{ option.label|t|raw }}
+											<span class="form-check-sign">
+							                    <span class="check"></span>
+							                </span>
+										</label>
+									</div>
+								{% endfor %}
+						
+								{{ field.renderInstructions() }}
+								{{ field.renderErrors() }}
+
+							{% elseif field.type in ["checkbox", "mailing_list"] %}
+
+								<div class="{{ columnClass }}">
+									{{ field.renderInput({ class: class ~ " checkbox" }) }}
+									{{ field.renderLabel({ labelClass: "form-check-label" ~ (field.hasErrors ? " is-invalid") }) }}
+									{{ field.renderErrors({ errorClass: errorClass }) }}
+								</div>
+
+							{% elseif field.type == "submit" %}
+
+								{{ field.render({ class: "btn btn-primary mt-5" }) }}
+
+							{% elseif field.type == "cc_details" %}
+
+								{# FOR FREEFORM PAYMENTS #}
+
+								{{ field.renderLabel({
+								labelClass: (field.required ? " required" : ""),
+								instructionsClass: "help-block",
+								errorClass: "help-block",
+							}) }}
+
+							{% for layoutRow in field.layoutRows %}
+								{% for layoutField in layoutRow %}
+									{% set layoutWidth = (12 / (layoutRow|length)) %}
+									{% set columnClass = columnClass|replace(' col-sm-' ~ width) %}
+									{% set columnClass = columnClass ~ " col-sm-" ~ layoutWidth %}
+									<div class="{{ columnClass }}">
+										{{ layoutField.render({
+											class: isCheckbox ? "checkbox" : "form-control",
+											instructionsClass: "help-block",
+											instructionsBelowField: true,
+											labelClass: (layoutField.required ? " required" : ""),
+											errorClass: "help-block",
+										}) }}
+									</div>
+								{% endfor %}
+							{% endfor %}
+
+							{{ field.renderInput({
+								instructionsClass: "help-block",
+								instructionsBelowField: true,
+								labelClass: (field.required ? " required" : ""),
+								errorClass: "help-block",
+							}) }}
+
+							{{ field.renderInstructions }}
+							{{ field.renderErrors }}
+
+							{% elseif field.type == "select" %}
+								{{ field.render({
+									class: class,
+									labelClass: "text-primary form-control-label",
+									instructionsClass: instructionClass,
+									instructionsBelowField: true,
+									errorClass: errorClass,
+								}) }}
+							{% else %}
+								{% set labelClass = "d-block text-primary form-control-label bmd-label-floating" ~ (field.required ? " required" : "") %}
+								{{ field.render({
+									class: class,
+									labelClass: labelClass,
+									instructionsClass: instructionClass,
+									instructionsBelowField: true,
+									errorClass: errorClass,
+								}) }}
+							{% endif %}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		{% endfor %}
+	</div>
+</div>
+
+{{ form.renderClosingTag }}

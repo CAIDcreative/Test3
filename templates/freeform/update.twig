@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sleep Dentistry Submission - Updating</title>
+	</head>
+	<body onload="{# document.form1.submit() #}"> 
+		{% set tokenParameter =  craft.app.request.getParam('id') %}
+		{% set statusParameter =  craft.app.request.getParam('status') %}
+		{% set submission = craft.freeform.submissions({ token: tokenParameter }).one() %}
+
+		{% if not submission | length %}
+			<p>Error: No submission with that ID.</p>
+		{% elseif not statusParameter | length %}
+			<p>Error: Status is invalid.</p>
+		{% else %}
+			<script src="https://www.google.com/recaptcha/api.js"></script>
+		    {% set submissionToken = submission.token %}
+		    {% set submissionForm = submission.formId %}
+
+		    {% set form = craft.freeform.form(submissionForm, {
+		        submissionToken: submissionToken|default(null),
+		        id: "form1",
+		        name: "form1",
+		        status: statusParameter,
+		        returnUrl: (siteUrl("freeform/done")),
+		        formAttributes: {
+		        	style: "",
+		        },
+		        suppress: {
+		            adminNotifications: true,
+		            dynamicRecipients: true,
+		            submitterNotifications: true,
+		            api: true
+		        }
+		    }) %}
+		    {{ form.render() }} 
+		{% endif %}
+
+		{#
+		{% do minifier.view.registerJsFile('/core/jquery.min.js') %}
+		{% do minifier.view.registerJsFile('/core/popper.min.js') %}
+		{% do minifier.view.registerJsFile('/core/bootstrap-material-design.min.js') %}
+		{% do minifier.view.registerJsFile('/plugins/moment.min.js') %}
+		{% do minifier.view.registerJsFile('/plugins/bootstrap-datetimepicker.js') %}
+		{% do minifier.view.registerJsFile('/plugins/bootstrap-tagsinput.js') %}
+		{% do minifier.view.registerJsFile('/plugins/bootstrap-datetimepicker.js') %}
+		{% do minifier.view.registerJsFile('/plugins/bootstrap-tagsinput.js') %}
+		{% do minifier.view.registerJsFile('/plugins/bootstrap-selectpicker.js') %}
+		{% do minifier.view.registerJsFile('/plugins/jasny-bootstrap.min.js') %}
+		{% do minifier.view.registerJsFile('/plugins/jquery.flexisel.js') %}
+		{% do minifier.view.registerJsFile('/material-kit.js') %}
+		{% do minifier.view.registerJsFile('/custom.js') %}
+		{% do minifier.view.registerJsFile('/lazysizes.min.js') %}
+		#}
+	</body>
+</html>

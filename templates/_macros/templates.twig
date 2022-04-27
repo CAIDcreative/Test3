@@ -1,0 +1,121 @@
+{# 
+	CAIDcreative/sleepdentistrymelbourne
+	_macros/templates.twig
+
+	{% extends "_macros/templates" %}
+#}
+
+{% macro printThemeCopyright() %}
+<!--
+ =========================================================
+ Material Kit PRO - v2.2.0
+ =========================================================
+
+ Product Page: https://themes.getbootstrap.com/product/material-kit-pro/
+ Copyright 2019 Creative Tim (https://www.creative-tim.com)
+
+ Coded by Creative Tim
+
+ =========================================================
+
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+{% endmacro %}
+
+{% macro printBreadCrumbs(entry) %}
+	{% if entry | length %}
+	    <nav aria-label="breadcrumb">
+		  	<ol class="breadcrumb">
+		  		<li class="breadcrumb-item"><a href="{{ siteUrl }}">Home</a></li>
+			    {% for crumb in entry.getAncestors().all() %}
+	    			<li class="breadcrumb-item"><a href="{{ crumb.url }}">{{ crumb.title }}</a></li>
+			    {% endfor %}
+			    <li class="breadcrumb-item active" aria-current="page">{{ entry.title }}</li>
+			</ol>
+		</nav>
+	{% endif %}
+{% endmacro %}
+
+{% macro printSidebarContactForm() %}
+	{% import "_macros/images" as images %}
+
+	<div class="bg-secondary rounded shadow text-left p-2 p-lg-4 sidebarContactFormBar">
+		<div class="w-100 text-center">
+			{{ images.filename("logo.png", {"class": "p-2", "style":"max-height: 120px;", "lazy": "true"}) }}
+		</div>
+		<h3 class="text-center text-white">Use the form below and one of dental staff will contact you.</h3>
+		{% set sidebarContactForm = craft.freeform.form("sidebarContact") %}
+		{{ sidebarContactForm.render }}
+	</div>
+{% endmacro %}
+
+{% macro printRelatedEntriesList(relatedEntries) %}
+	<div class="row mt-5">
+		<div class="col-12 col-lg-4">
+			<div class="card bg-primary">
+				<div class="card-body">
+					<h2 class="text-white border-bottom">Related Topics:</h2>
+					<ul class="text-white">
+						{% for relatedEntry in relatedEntries %}
+							<li><a href="{{ relatedEntry.url }}" class="text-white lead">{{ relatedEntry.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endmacro %}
+
+{% macro printRelatedEntriesSquares(relatedEntries, entryTitle = "") %}
+	{% import "_macros/images" as images %}
+
+	<div class="row mt-lg-4">
+		{#
+		<div class="col-12">
+			<h2 class="text-primary border-bottom">Related Topics</h2>
+		</div>
+		#}
+
+		{% set entriesToShow = [] %}
+		{% set searchResults = [] %}
+		{% if relatedEntries | length < 4 %}
+			{% if entryTitle | length %}
+				{% set searchResults = craft.entries()
+					.section("innerPages")
+				    .orderBy('RAND()')
+				    .limit(4 - (relatedEntries | length))
+				    .all() 
+			    %}
+			{% endif %}
+		{% endif %}
+		{% set entriesToShow = relatedEntries | merge(searchResults) %}
+
+		{% for relatedEntry in entriesToShow %}
+			<a class="col-md-3 rounded" href="{{ relatedEntry.url }}">
+				<div class="card my-2 my-lg-2 box-shadow rounded">
+					{% set mainImage = relatedEntry.mainImage %}
+					{{ images.asset(mainImage, {"class": "card-img-top", "transform": "x1280x720"}) }}
+					<div class="card-footer bg-dark">
+						<p class="card-text text-white text-bold text-center">{{ relatedEntry.title }}</p>
+					</div>
+				</div>
+			</a>
+		{% endfor %}
+	</div>
+{% endmacro %}
+
+{% macro printStrandardHeader(entry) %}
+	{% import "_macros/images" as images %}
+	
+	<div class="container-fluid bg-dark-primary">
+        <div class="row flex-column-reverse flex-lg-row">
+            <div class="col-lg-7 d-flex justify-content-start align-items-center px-5">
+                <h1 class="text-white text-uppercase">{{ entry.title }}</h1>
+            </div>
+            <div class="col-lg-5 px-0">
+                {% set mainImage = entry.mainImage %}
+                {{ images.asset(mainImage, {"class": "w-100", "transform": "x1920x1080"}) }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

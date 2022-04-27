@@ -1,0 +1,17 @@
+contentColumnType: text
+fieldGroup: 01f54834-a45f-4dcf-941f-c88597c01fa6
+handle: locationPhone
+instructions: ''
+name: 'Location Phone'
+searchable: true
+settings:
+  country: AU
+  customPatternErrorMessage: ''
+  customPatternToggle: null
+  inputMask: null
+  limitToSingleCountry: '1'
+  mask: null
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: barrelstrength\sproutfields\fields\Phone

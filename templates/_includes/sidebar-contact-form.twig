@@ -1,0 +1,8 @@
+<div class="bg-secondary rounded shadow text-left p-2 p-lg-4 sidebarContactFormBar">
+	<div class="w-100 text-center">
+		{{ craft.imageHelper.filename("logo.png", {"class": "p-2", "style": "max-height: 120px;", "transform": ""}).render }}
+	</div>
+	<h3 class="text-center text-white">Use the form below and one of dental staff will contact you.</h3>
+	{% set sidebarContactForm = craft.freeform.form("sidebarContact") %}
+	{{ sidebarContactForm.render }}
+</div>

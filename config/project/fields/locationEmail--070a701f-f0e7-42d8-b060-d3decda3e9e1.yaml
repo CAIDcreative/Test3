@@ -1,0 +1,11 @@
+contentColumnType: string
+fieldGroup: 01f54834-a45f-4dcf-941f-c88597c01fa6
+handle: locationEmail
+instructions: ''
+name: 'Location Email'
+searchable: true
+settings:
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Email

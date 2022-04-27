@@ -1,0 +1,11 @@
+enableVersioning: true
+handle: paymentPlans
+name: 'Payment Plans'
+propagationMethod: all
+siteSettings:
+  cc6fa99a-ca93-4981-b944-2d8003b95c5b:
+    enabledByDefault: true
+    hasUrls: true
+    template: payment-plans/index
+    uriFormat: payment-plans
+type: single

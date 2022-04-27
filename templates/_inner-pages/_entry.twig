@@ -1,0 +1,92 @@
+{# 
+	CAIDcreative/sleepdentistrymelbourne
+	innerpage/index.twig
+#}
+
+{% extends "_layouts/main" %}
+
+{% import "_macros/templates" as templates %}
+
+{% block main %}
+    <div class="main main-shadow">
+    	{% include '_includes/standard-header' with {'entry': entry, } %}
+
+		<section class="section section-basic">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-lg-8">
+						{% include '_includes/breadcrumbs' with { 'entry': entry } %}
+						
+						{% if entry.children | length %}
+							<article>
+								<ul>
+									{% set entryChildren = entry.children.all() %}
+									{% for child in entryChildren %}
+										<li class="lead"><a href="{{ child.url }}">{{ child.title }}</a></li>
+									{% endfor %}
+								</ul>
+							</article>
+						{% endif %}
+
+						{% set innerPageMatrix = entry.innerPageMatrix.all() %}
+						{% if innerPageMatrix | length %}
+							<article>
+								{% for matrixBlock in innerPageMatrix %}
+									{% switch matrixBlock.type %}
+										{% case "largeHeading" %}
+											<h2 class="text-primary">
+												{{ matrixBlock.heading }}
+											</h2>
+										{% case "smallHeading" %}
+											<h2 class="text-primary">
+												{{ matrixBlock.heading }}
+											</h2>
+										{% case "paragraph" %}
+											{{ matrixBlock.paragraph }}
+										{% case "largeImage" %}
+											{% set largeImage = matrixBlock.image %}
+											<figure>
+												{% if largeImage | length %}
+													{{ craft.imageHelper.one(largeImage, {"class": "img-raised rounded img-fluid", "transform": "x1280x720"}).render }}
+												{% endif %}
+												{% if matrixBlock.caption | length %}
+													<figcaption>{{ matrixBlock.caption }}</figcaption>
+												{% endif %}
+											</figure>
+										{% case "paragraphPrimaryBg" %}
+											<div class="card bg-primary">
+												<div class="card-body">
+													<h2 class="text-dark-primary border-bottom-dark-primary my-3">
+														{{ matrixBlock.heading }}
+													</h2>
+													<div class="text-white">
+														{{ matrixBlock.paragraph }}
+													</div>
+												</div>
+											</div>
+										{% case "video" %}
+											{% if matrixBlock.embedUrl | length %}
+												<div class="embed-responsive embed-responsive-16by9 mb-2">
+													<iframe class="embed-responsive-item" src="{{ matrixBlock.embedUrl }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+												</div>
+											{% endif %}
+										{% default %}
+									{% endswitch %}
+								{% endfor %}
+							</article>
+						{% endif %}
+					</div>
+					<div class="col-12 col-lg-4">
+						{% include '_includes/sidebar-contact-form' %}
+					</div>
+				</div>
+
+				<div class="col-12 my-2 my-lg-5">
+				</div>
+
+				{% set relatedEntries = entry.relatedEntries.all() %}
+				{% include '_includes/related-entries-squares' with {'relatedEntries': relatedEntries, } %}
+			</div>
+		</section>
+	</div>
+{% endblock %}

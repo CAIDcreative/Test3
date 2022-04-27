@@ -1,0 +1,40 @@
+field: d7d77960-d953-455d-a7f9-28d6c6dfb833 # Inner Page Matrix
+fieldLayouts:
+  11ad180a-c357-4e39-b56b-45fa1c006bfd:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 89005538-c4df-4767-9f4a-2ebc9e74ff44 # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  89005538-c4df-4767-9f4a-2ebc9e74ff44: # Heading
+    contentColumnType: text
+    fieldGroup: null
+    handle: heading
+    instructions: ''
+    name: Heading
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '2'
+      multiline: '1'
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: smallHeading
+name: 'Small Heading'
+sortOrder: 2

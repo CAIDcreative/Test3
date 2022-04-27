@@ -1,0 +1,21 @@
+contentColumnType: text
+fieldGroup: 01f54834-a45f-4dcf-941f-c88597c01fa6
+handle: locationDescription
+instructions: ''
+name: 'Location Description'
+searchable: true
+settings:
+  availableTransforms: '*'
+  availableVolumes:
+    - 2f10cfd8-276a-4b43-94ab-a677bad7010c
+  cleanupHtml: true
+  columnType: text
+  purifierConfig: ''
+  purifyHtml: '1'
+  redactorConfig: ''
+  removeEmptyTags: '1'
+  removeInlineStyles: '1'
+  removeNbsp: '1'
+translationKeyFormat: null
+translationMethod: none
+type: craft\redactor\Field

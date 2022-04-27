@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: b97ea181-5aeb-45b3-93f5-3c0f6276832a
+handle: alt
+instructions: ''
+name: alt
+searchable: true
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

@@ -1,0 +1,9 @@
+format: null
+handle: x1920x1080
+height: 1080
+interlace: none
+mode: crop
+name: x1920x1080
+position: center-center
+quality: 60
+width: 1920

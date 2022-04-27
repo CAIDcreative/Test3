@@ -1,0 +1,27 @@
+{# CAIDcreative/sleepdentistrymelbourne contact/index.twig #} 
+
+{% extends "_layouts/main" %} 
+{% import "_macros/images" as images %} 
+{% import "_macros/templates" as templates %}
+
+{% block main %}
+    {% set mainImage = craft.imageHelper.filename('bookings_background.jpg') %}
+    <div class="page-header clear-filter" data-parallax="false" style="background-image: url('{{ mainImage.url }}'); background-position: left center; height: inherit !important; min-height: 80vh; padding-top: 5em; padding-bottom: 5em;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 offset-md-4 col-md-8 offset-xl-5 col-xl-7">
+                    <div class="card p-3 mt-0">
+                        <div class="card-header card-header-dark-primary mb-3">
+                            <h1 class="text-white text-uppercase text-center my-0">Thank You</h1>
+                        </div>
+                        <div class="card-body p-0 p-lg-3">
+                            <p class="lead">Thank you for contacting us. A Sleep Dentistry Melbourne staff member will reply as soon as possible.</p>
+                            <a href="{{ siteUrl }}" class="btn btn-primary btn-lg">Return to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+
+{% endblock %}

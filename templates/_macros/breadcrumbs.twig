@@ -1,0 +1,11 @@
+{% if entry | length %}
+    <nav aria-label="breadcrumb">
+	  	<ol class="breadcrumb">
+	  		<li class="breadcrumb-item"><a href="{{ siteUrl }}">Home</a></li>
+		    {% for crumb in entry.getAncestors().all() %}
+    			<li class="breadcrumb-item"><a href="{{ crumb.url }}">{{ crumb.title }}</a></li>
+		    {% endfor %}
+		    <li class="breadcrumb-item active" aria-current="page">{{ entry.title }}</li>
+		</ol>
+	</nav>
+{% endif %}

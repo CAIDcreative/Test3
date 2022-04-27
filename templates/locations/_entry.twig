@@ -1,0 +1,123 @@
+{# 
+	CAIDcreative/sleepdentistrymelbourne 
+	locations/_entry.twig 
+#} 
+
+{% extends "_layouts/main" %} 
+{% import "_macros/images" as images %} 
+{% import "_macros/templates" as templates %} 
+
+{% block main %}
+
+    <div class="main main-shadow">
+        {{ templates.printStrandardHeader(entry) }}
+		<div class="mt-3">
+			<div class="container pb-5">
+				<div class="row flex-reverse-row flex-row-lg">
+				 	<div class="col-md-8 my-3">
+						<h2 class="text-primary text-uppercase border-bottom">About {{ entry.title }} Sleep Dentistry</h2>
+						{% if entry.locationDescription | length %}
+							{{  entry.locationDescription }}
+						{% else %}
+							{# <p>No description.</p> #}
+						{% endif %}
+
+						{#
+						<p class="lead text-dark-primary">
+							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+						</p>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+						#}
+
+						{% set locationServices = entry.locationServices.all() %}
+						{% if locationServices | length %}
+							<h3 class="text-primary text-uppercase h3 border-bottom pb-1">Our Services &amp; Treatments</h3>
+							<div class="col-12">
+								<div class="d-flex flex-row flex-wrap h3">
+									{% for locationService in locationServices %}
+										<a href="{{ locationService.url }}" class="w-50 p-2 list-group-item-action text-secondary">
+											<i class="material-icons mr-2 text-dark">play_arrow</i>{{ locationService.title }}
+										</a>
+									{% endfor %}
+								</div>
+							</div>
+						{% endif %}
+
+						{% set locationPartners = entry.locationPartners.all() %}
+						{% if locationPartners | length %}
+							<h3 class="text-primary text-uppercase h3 border-bottom pb-1">Official Partners</h3>
+							<ul class="p-0 d-flex justify-content-start align-items-center list-unstyled">
+								{% for partner in locationPartners %}
+									<li>
+										<a href="{{ partner.partnerLink | length ? partner.partnerLink : '#' }}">
+											{{ images.asset(partner.partnerLogo, {"class": "ls-is-cached lazyloaded m-3", "style": "width:200px;"}) }}
+										</a>
+									</li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+					</div>
+					<div class="col-lg-4">
+						<div class="card bg-white rounded">
+							<div class="card-body">
+								<div class="">
+	                                <h5 class="h3 m-0 p-0 text-primary text-uppercase align-items-center border-bottom">
+	                                    <a href="{{ entry.url }}" class="text-primary font-weight-bold">{{ entry.title }}</a>
+	                                </h5>
+	                                <dl class="pl-0">
+                                        <dt class="">
+                                            <span class="text-dark-primary">Phone: </span><br/>
+                                        </dt>
+                                        <dd class="d-flex">
+                                            <a href="{{ entry.locationPhone.RFC3966 }}" class="text-secondary lead">
+                                                <i class="material-icons p-2">phone</i>{{ entry.locationPhone.phone }}
+                                            </a>
+                                        </dd>
+                                        <dt class="">
+                                            <span class="text-dark-primary">Address: </span><br/>
+                                        </dt>
+                                        <dd class="text-dark d-flex align-items-center">
+                                            <div class="d-flex">
+                                                <i class="material-icons p-2">location_on</i>
+                                                <span>{{ entry.locationAddress.address1 ~ ", " ~ entry.locationAddress.administrativeArea ~ " " ~ entry.locationAddress.administrativeAreaCode }}</span>
+                                            </div>
+                                        </dd>
+
+	                                    {% if entry.locationMapUrl | length %}
+											<iframe src="{{ entry.locationMapUrl }}" width="100%" height="150" frameborder="0" style="border:1 solid #007571!important;" allowfullscreen=""></iframe>
+	                                    {% endif %}
+
+
+                                        <dt class="">
+                                            <span class="text-dark-primary">Hours: </span><br/>
+                                        </dt>
+	                                    <dd class="text-dark">
+		                                    <ul class="p-0 border-top">
+		                                        {% for day in entry.locationStoreHours.getRange(1, 0) %}
+		                                            <p class="p-0 border-bottom d-flex justify-content-between"><span>{{ day.name ~ ": "}}</span><span>{{(day.isBlank ? "Closed" : day.open | time('short') ~ " - " ~ day.close | time('short')) }}</span></p>
+		                                        {% endfor %}
+		                                    </ul>
+		                                </dd>
+	                                </dl>
+	                            </div>
+							</div>
+							<div class="card-footer">
+								<div class="row">
+									<div class="col-12">
+										<a href="{{ bookAppointmentUrl ~ "?" ~ ({'location': entry.title } | url_encode ) }}" class="btn btn-outline btn-round btn-block m-2 text-bold w-100">
+										 Book Appointment</a>
+									 </div>
+									 <div class="col-12">
+										<a href="{{ contactUrl ~ "?" ~ ({'preferredClinic': entry.title } | url_encode ) }}" class="btn btn-secondary btn-round btn-block  m-2 text-bold w-100">
+										 Clinic Enquiry</a>
+									 </div>
+								 </div>
+							 </div>
+						 </div>
+					</div>
+				 </div>
+			</div>
+		</div>
+	</div>
+
+ {% endblock %}

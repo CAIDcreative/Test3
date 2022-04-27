@@ -1,0 +1,53 @@
+{# 
+    CAIDcreative/sleepdentistrymelbourne 
+    news/_entry.twig 
+#} 
+
+{% extends "_layouts/main" %} 
+
+{% block main %}
+    
+    <div class="main main-shadow">
+        {% include '_includes/standard-header' with {'entry': entry, } %}
+        <section class="section section-basic">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        {% include '_includes/breadcrumbs' with { 'entry': entry } %}
+
+                        {% set innerPageMatrix = entry.innerPageMatrix.all() %}
+                        {% include '_includes/inner-page-matrix' with { 'innerPageMatrix': innerPageMatrix } %}
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        {% include '_includes/sidebar-contact-form' %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="text-secondary text-uppercase border-bottom">Related Articles</h2>
+                    </div>
+                    {% set myEntryQuery = craft.entries().section('news').limit(3) %}
+                    {% set entries = myEntryQuery.all() %}
+                    {% for entry in entries %}
+                        <div class="col-md-4 d-flex">
+                            <div class="card mb-6 box-shadow">
+                                <a href="{{ entry.url }}">
+                                    {% set mainImage = entry.mainImage %}
+                                    {{ craft.imageHelper.one(mainImage, {"class": "card-img-top", "transform": "x1280x720"}).render }}
+                                </a>
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="mb-2">
+                                        <a href="{{ entry.url }}">
+                                        <h3 class="text-primary text-uppercase">{{ entry.title }}</h3></a>
+                                        <p class="card-text text-black">{{ entry.summary }}</p>
+                                    </div>
+                                    <a href="{{ entry.url }}" button type="button" class="btn btn-sm btn-secondary" style="width: fit-content">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

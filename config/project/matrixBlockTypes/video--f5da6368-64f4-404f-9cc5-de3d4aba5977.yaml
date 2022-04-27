@@ -1,0 +1,36 @@
+field: d7d77960-d953-455d-a7f9-28d6c6dfb833 # Inner Page Matrix
+fieldLayouts:
+  fccde480-11ae-4982-ab44-33892d0db047:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 858e3914-a29f-480d-aba6-c072296b11e4 # Embed Url
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  858e3914-a29f-480d-aba6-c072296b11e4: # Embed Url
+    contentColumnType: string(1000)
+    fieldGroup: null
+    handle: embedUrl
+    instructions: ''
+    name: 'Embed Url'
+    searchable: true
+    settings:
+      maxLength: '1000'
+      placeholder: null
+      types:
+        - url
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+handle: video
+name: Video
+sortOrder: 6

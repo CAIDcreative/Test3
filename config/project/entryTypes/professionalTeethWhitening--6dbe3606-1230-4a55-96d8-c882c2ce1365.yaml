@@ -1,0 +1,33 @@
+fieldLayouts:
+  c0f5d059-359c-4e6f-a8c9-41d99e01bd68:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: 62caa9dc-1699-4df1-aede-d8715a247d78
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: b15ca5cb-e30d-4fc3-b518-2c18dd66bb00
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: e8a6d443-d5a6-47d6-b808-20286df833b6
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: d7583edf-ba9b-4bd8-a32a-77ea7655ec8f
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: SEO
+        sortOrder: 1
+handle: professionalTeethWhitening
+hasTitleField: true
+name: 'Professional Teeth Whitening'
+section: 54ddadec-b5e3-488e-a7e4-d2be93ce7095
+sortOrder: 1
+titleFormat: '{section.name|raw}'

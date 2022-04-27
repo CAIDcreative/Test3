@@ -1,0 +1,18 @@
+contentColumnType: string
+fieldGroup: bc981df3-8707-46cf-95ee-de00eaa31486
+handle: relatedEntries
+instructions: 'Add related entries to be shown in squared image links on this page (max 4). If less than 4 is selected, the rest will be populated with random entries.'
+name: 'Related Entries'
+searchable: true
+settings:
+  limit: '4'
+  localizeRelations: false
+  selectionLabel: ''
+  source: null
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: ''
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

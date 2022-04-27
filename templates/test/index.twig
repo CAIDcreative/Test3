@@ -1,0 +1,70 @@
+{# 
+    CAIDcreative/sleepdentistrymelbourne 
+    locations/index.twig 
+    #} 
+
+    {% extends "_layouts/main" %} 
+
+    {% import "_macros/images" as images %} 
+    {% import "_macros/templates" as templates %} 
+
+    {% block main %}
+
+
+        <div class="main main-shadow">
+            <div class="my-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            {% if currentUser and currentUser.admin %}
+                            {{ craft.freeform.form("testNotification").render() }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {#
+    	<div class="main main-shadow">
+    		<div class="my-3">
+    			<div class="container">
+    				<div class="row">
+    					<div class="col-12 col-lg-6">
+    						<div class="card card-background" style="background-image: url('/assets/images/smiling.jpg'); background-repeat: no-repeat; background-size: cover;">
+    							<div class="card-body">
+    								<div>
+	    								<h6 class="special-heading-one text-secondary p-0 m-0">Professional</h6>
+	    								<span class="special-heading-two p-0 m-0 text-uppercase">TEETH WHITENING</span>
+    								</div>
+    								<div class="p-0 m-0">
+    									<h5 class="special-heading-from mb-2">Starting From<br><span class="special-heading-price">$300</span> </h5>
+    							 	</div>
+    								<a href="#" class="btn btn-secondary btn-round">Enquire Now</a>
+    							</div>
+    						</div>
+    					</div>
+
+    					<div class="col-12 col-lg-6">
+    						<div class="card card-background" style="background-image: url('/assets/images/crownsandveneers.jpg'); background-repeat: no-repeat; background-size: cover;">
+    							<div class="card-body">
+    								<div>
+	    								<h6 class="special-heading-one text-secondary p-0 m-0">Prorcelain</h6>
+	    								<span class="special-heading-two p-0 m-0 text-uppercase">Veneers &amp; Crowns</span>
+    								</div>
+    								<div class="p-0 m-0">
+    									<h5 class="special-heading-from mb-2">Starting From<br><span class="special-heading-price">$1950</span> </h5>
+    							 	</div>
+    								<a href="#" class="btn btn-secondary btn-round">Enquire Now</a>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    #}
+
+{% endblock %}

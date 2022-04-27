@@ -1,0 +1,25 @@
+fieldLayouts:
+  4ef168cd-7039-40cf-b905-c2e3f4190c9d:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: 'Partner Name'
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: 556d03f9-05c7-49ed-978f-41091132308c
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 1783a5a9-90ee-4de1-966a-4a6d8f53f4da
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Partner
+        sortOrder: 1
+handle: partners
+hasTitleField: true
+name: Partners
+section: 1fafc5fe-230e-4db9-87d1-ff7915ae34a1
+sortOrder: 1
+titleFormat: ''

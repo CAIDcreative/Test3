@@ -1,0 +1,18 @@
+fieldLayouts:
+  fa643b75-ace1-4628-99ce-7bd8d0c432d9:
+    tabs:
+      -
+        fields:
+          07116793-11e6-4483-b222-0543e1334d2c:
+            required: false
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+handle: images
+hasUrls: true
+name: Images
+settings:
+  path: '@webroot/assets/images'
+sortOrder: 1
+type: craft\volumes\Local
+url: $ASSETS_IMAGE_URL

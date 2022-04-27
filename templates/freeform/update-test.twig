@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sleep Dentistry Submission - Updating</title>
+</head>
+	{% set tokenParameter =  craft.app.request.getParam('id') %}
+	{% set statusParameter =  craft.app.request.getParam('status') %}
+	{% set submission = craft.freeform.submissions({ token: tokenParameter }).one() %}
+
+	{% if not submission | length %}
+		<body>
+			<p>Error: No submission with that ID.</p>
+		</body>
+	{% elseif not statusParameter | length %}
+		<body>
+			<p>Error: Status is invalid.</p>
+		</body>
+	{% else %}
+		<body onload="document.form1.submit()">
+		    {% set submissionToken = submission.token %}
+		    {% set submissionForm = submission.formId %}
+
+		    {% set form = craft.freeform.form(submissionForm, {
+		        submissionToken: submissionToken|default(null),
+		        name: "form1",
+		        status: statusParameter,
+		        returnUrl: (siteUrl("freeform/done")),
+		        formAttributes: {
+		        	style: "display: none;",
+		        },
+		        suppress: {
+		            adminNotifications: true,
+		            dynamicRecipients: true,
+		            submitterNotifications: true,
+		            api: true
+		        }
+		    }) %}
+		    {{ form.render() }}
+		</body>
+	{% endif %}
+</html>

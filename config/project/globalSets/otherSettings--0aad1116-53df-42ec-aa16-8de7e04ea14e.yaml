@@ -1,0 +1,13 @@
+fieldLayouts:
+  65f18227-7da6-4940-8338-b79bafe902e2:
+    tabs:
+      -
+        fields:
+          bf6c4b1a-89da-485e-8580-deaa805887de:
+            required: false
+            sortOrder: 1
+        name: 'Other Settings'
+        sortOrder: 1
+handle: otherSettings
+name: 'Other Settings'
+sortOrder: 4

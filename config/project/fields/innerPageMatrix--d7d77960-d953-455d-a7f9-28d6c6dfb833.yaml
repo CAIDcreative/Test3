@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: d5c899de-f190-48f0-baed-c4befad40c35
+handle: innerPageMatrix
+instructions: ''
+name: 'Inner Page Matrix'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_innerpagematrix}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

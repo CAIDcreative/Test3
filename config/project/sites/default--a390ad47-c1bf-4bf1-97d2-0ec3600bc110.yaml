@@ -1,8 +1,0 @@
-baseUrl: $PRIMARY_SITE_URL
-handle: default
-hasUrls: true
-language: en
-name: Test3
-primary: true
-siteGroup: f715aa93-4bdb-4870-bc26-e03d2327805b # Test3
-sortOrder: 1
