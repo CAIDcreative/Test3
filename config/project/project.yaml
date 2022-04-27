@@ -1,0 +1,32 @@
+dateModified: 1651027895
+email:
+  fromEmail: steven@madedigital.group
+  fromName: Test3
+  replyToEmail: null
+  template: null
+  transportSettings:
+    encryptionMethod: none
+    host: mailhog.service.nitro
+    password: ''
+    port: '1025'
+    timeout: '10'
+    useAuthentication: '0'
+    username: ''
+  transportType: craft\mail\transportadapters\Smtp
+meta:
+  __names__:
+    9efdd198-38ba-4a6e-9833-bf4a33b313a0: Common # Common
+    a390ad47-c1bf-4bf1-97d2-0ec3600bc110: Test3 # Test3
+    f715aa93-4bdb-4870-bc26-e03d2327805b: Test3 # Test3
+system:
+  edition: solo
+  live: true
+  name: Test3
+  schemaVersion: 3.7.33
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true
